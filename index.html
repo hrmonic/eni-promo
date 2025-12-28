@@ -6,50 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Liste des apprenants de la promotion ENI EDWM2511FT.">
     <title>PromoENI - Accueil</title>
-    <!-- Fichier désactivé pour l'instant <link rel="stylesheet" href="style.css"> --> 
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
-<body>
+<body class="accueil">
     <header>
-        <a href="index.html">
-            <img src="images/logo.png" alt="Logo ENI, lien vers l'accueil">
-        </a>
+        <div class="header-gauche">
+            <a href="index.html">
+                <img src="images/logo.png" alt="Logo ENI, lien vers l'accueil">
+            </a>
+        </div>
 
         <h1>Promo EDWM2511FT</h1>
 
-        <nav>
-            <ul>
+        <nav class="navigation">
+            <ul class="menu">
                 <li><a href="index.html">Accueil </a></li>
                 <li><a href="pageprovisoire.html">Préférences</a></li>
                 <li><a href="pageprovisoire.html">Carte</a></li>
-                <li><a href="pageprovisoire.html">Information</a></li>
-
+                <li><a href="informations.html">Informations</a></li>
             </ul>
+            <fieldset class="type-affichage">
+
+                <legend>Type d'affichage :</legend>
+               
+                <div class="type-affichage-choix">
+                <label for="type-liste">Liste</label>
+                <input type="radio" id="type-liste" name="affichage" value="Liste" checked>
+
+                <label for="type-cartes">Cartes</label>
+                <input type="radio" id="type-cartes" name="affichage" value="Cartes">
+                </div>
+            </fieldset>
         </nav>
-
-        <fieldset>
-            <legend>Type d'affichage</legend>
-            <label for="type-liste">Liste</label>
-            <input type="radio" id="type-liste" name="affichage" value="Liste" checked>
-
-            <label for="type-cartes">Type d'affichage</label>
-            <input type="radio" id="type-cartes" name="affichage" value="Cartes">
-        </fieldset>
-
     </header>
 
     <main>
 
         <h2>Liste des apprenants</h2>
 
-        <table>
+        <table class="tableau">
             <thead>
                 <tr>
                     <th>Nom</th>
                     <th>Prénom</th>
                     <th>Ville</th>
-                    <th></th>
+                    <th>Actions</th>
                 </tr>
             </thead>
 
@@ -147,7 +150,7 @@
                 <tr>
                     <td>Griezman</td>
                     <td>Antoine</td>
-                    <td>Perpignon</td>
+                    <td>Perpignan</td>
                     <td><a href="">Détail</a></td>
                 </tr>
 

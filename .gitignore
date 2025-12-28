@@ -1,0 +1,15 @@
+# ===== Éditeur / OS =====
+.vscode/
+.idea/
+*.code-workspace
+
+# ===== Systèmes =====
+.DS_Store
+Thumbs.db
+
+# ===== Dépendances (si plus tard JS) =====
+node_modules/
+
+# ===== Fichiers temporaires =====
+*.log
+*.tmp

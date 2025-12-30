@@ -3,51 +3,66 @@
     padding: 0;
 }
 
-header {
-
-    padding: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-between;
-    background: linear-gradient(to left, #769ab97d, #ffffff);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.61);
-    color: rgb(11, 50, 84);
-    margin-bottom: 1rem;
-}
-
 body {
     margin: 1rem;
-
     background-color: rgb(11, 50, 84);
     color: white;
     font-family: monospace;
 }
 
-h1 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.navigation {
+header {
+    position: sticky;
+    top: 0;
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: space-around;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    padding: 0.5rem;
+    background: linear-gradient(to left, #769ab9, #ffffff);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.61);
+    border-radius: 0.5rem;
+    color: rgb(11, 50, 84);
+    margin-bottom: 1rem;
 
 }
+
+.header-gauche {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+h1 {
+    justify-content: center;
+    gap: 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.header-droite {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+
+    gap: 0.75rem;
+}
+
 
 .menu {
     display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
+    gap: 1rem;
     list-style: none;
-    margin: 0;
-    padding: 0;
-
 }
 
 .menu a {
     display: flex;
+    font-size: 1.2rem;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
@@ -70,26 +85,35 @@ h1 {
 }
 
 .type-affichage {
-    color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
     border: none;
-    font-weight: 500;
+    padding: 0;
+    margin: 0;
     cursor: pointer;
+    font-size: 1.2rem;
+    margin-top: 0.25rem;
 }
 
 .type-affichage-choix {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 1rem;
+    align-items: center;
+    gap: 0.75rem;
 }
 
 body.informations .type-affichage {
     visibility: hidden;
 }
 
+body.preferences .type-affichage {
+    visibility: hidden;
+}
+
 .tableau {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+        border-spacing: 0;
     background: #ffffff1c;
     font-size: 0.9375rem;
     line-height: 1.6;
@@ -100,6 +124,39 @@ body.informations .type-affichage {
 
 .tableau thead {
     background-color: gray;
+}
+
+.tableau th {
+    position: sticky;
+    top: 0;
+}
+
+.tableau thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background-color: gray;
+}
+
+
+
+.tableau tr {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.tableau tr:hover {
+    background-color: rgb(6, 25, 42);
+}
+
+.tableau td {
+    padding: 2rem;
+    border-bottom: 1.5px solid #cccccca2;
+}
+
+.tableau-scroll {
+    max-height: calc(100vh - 260px);
+    overflow-y: auto;
 }
 
 .infos {
@@ -142,31 +199,143 @@ footer {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-
     padding: 1rem;
-
     justify-content: center;
     background: linear-gradient(to left, #769ab97d, #ffffff);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.61);
+    border-radius: 0.5rem;
     color: rgb(11, 50, 84);
     margin-top: 1rem;
 }
 
-footer a {
+.container1 li {
+    margin-left: 2rem;
+}
+
+.actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+.actions a {
     text-decoration: none;
-    justify-content: center;
-    align-items: center;
-    padding: 0.5rem;
-    text-decoration: none;
-    font-weight: 600;
-    color: rgb(11, 50, 84);
-    border: 2px solid rgb(11, 50, 84);
-    border-radius: 10%;
-    box-shadow: 0 2px 3px rgba(16, 0, 0, 0.771);
-    background-color: #ffffff;
+    color: white;
+    cursor: pointer;
     transition: all 0.2s ease;
 }
 
-.container1 li {
-    margin-left: 2rem;
+.actions a:hover {
+    background-color: white;
+    color: rgb(11, 50, 84);
+    border-radius: 15%;
+    box-shadow: 2px pink;
+    transform: translateY(-3px);
+}
+
+.parametres {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.ligne-parametre {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 2rem;
+}
+
+.type-affichage-choix {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.affichage-choix-parametres {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start;
+}
+
+.position-radio {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    cursor: pointer;
+
+}
+
+.bouton {
+    display: flex;
+    justify-content: center;
+}
+
+.bouton a,
+.bouton button {
+  margin-top: 2rem;
+  text-decoration: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  font-weight: 600;
+  color: rgb(11, 50, 84);
+  border: 2px solid rgb(11, 50, 84);
+  border-radius: 10%;
+  box-shadow: 0 2px 3px rgba(16, 0, 0, 0.771);
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  font-size: inherit; 
+}
+
+.bouton a:hover,
+.bouton button:hover {
+  color: white;
+  background-color: rgb(11, 50, 84);
+  transform: translateY(-3px);
+  box-shadow: 3px 3px 3px rgba(255, 255, 255, 0.658);
+}
+
+.bouton button:hover {
+    color: white;
+    background-color: rgb(11, 50, 84);
+    transform: translateY(-3px);
+    box-shadow: 3px 3px 3px rgba(255, 255, 255, 0.658);
+}
+
+.boutons-parametres {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 600px) {
+
+    .header-gauche,
+    .header-droite {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .menu {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .ligne-parametre {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
 }

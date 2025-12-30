@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Liste des apprenants de la promotion ENI EDWM2511FT.">
+    <title>PromoENI - Accueil</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/d276115f7d.js" crossorigin="anonymous"></script>
+    <script src="script.js" defer></script>
+
+
+</head>
+
+<body class="preferences">
+    <header>
+        <div class="header-gauche">
+            <a href="index.html">
+                <img src="images/logo.png" alt="Logo ENI, lien vers l'accueil">
+            </a>
+        </div>
+
+        <h1>Promo EDWM2511FT</h1>
+
+        <nav class="header-droite">
+            <ul class="menu">
+                <li><a href="index.html">Accueil </a></li>
+                <li><a href="preferences.html">Préférences</a></li>
+                <li><a href="pageprovisoire.html">Carte</a></li>
+                <li><a href="informations.html">Informations</a></li>
+            </ul>
+            <fieldset class="type-affichage">
+                <div>
+                    <span>Type d'affichage :</span>
+                </div>
+                <div>
+                    <label for="type-liste">Liste</label>
+                    <input type="radio" id="type-liste" name="affichage" value="Liste" checked>
+
+                    <label for="type-cartes">Cartes</label>
+                    <input type="radio" id="type-cartes" name="affichage" value="Cartes">
+                </div>
+            </fieldset>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Préférences du site</h2>
+
+<form class="parametres">
+
+    <div class="ligne-parametre">
+        <span>Thème du site</span>
+        <select name="theme">
+            <option value="sombre">Sombre</option>
+            <option value="clair">Clair</option>
+        </select>
+    </div>
+
+    <div class="ligne-parametre">
+        <span>Format d'affichage de la liste des apprenants</span>
+        <div class="affichage-choix-parametres">
+
+            <label class="position-radio">
+                <input type="radio" name="affichage" value="liste" checked>
+                Liste
+            </label>
+
+            <label class="position-radio">
+                <input type="radio" name="affichage" value="cartes">
+                Cartes
+            </label>
+
+        </div>
+    </div>
+
+    <div class="boutons-parametres">
+
+        <div class="bouton">
+            <a href="index.html">Retour à la page d'Accueil</a>
+        </div>
+
+        <div class="bouton">
+            <button type="submit" id="save" class="btn-enregistrer">
+                Enregistrer
+            </button>
+        </div>
+
+    </div>
+
+</form>
+
+
+    </main>
+
+    <footer>
+
+    </footer>
+</body>

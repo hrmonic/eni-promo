@@ -1,0 +1,124 @@
+{
+  "apprenants": [
+    {
+      "id": 1,
+      "nom": "AKSU",
+      "prenom": "Ahmet",
+      "ville": "Lyon",
+      "avatar": "avatar.png",
+      "anecdotes": "Toujours partant pour aider sur les bugs JavaScript."
+    },
+    {
+      "id": 2,
+      "nom": "BORE",
+      "prenom": "Severine",
+      "ville": "Rennes",
+      "avatar": "avatar.png",
+      "anecdotes": "Grande adepte des checklists avant de coder."
+    },
+    {
+      "id": 3,
+      "nom": "BOUHAYOUFI",
+      "prenom": "Ellies",
+      "ville": "Grenoble",
+      "avatar": "avatar.png",
+      "anecdotes": "Aime optimiser le CSS jusque dans les détails."
+    },
+    {
+      "id": 4,
+      "nom": "BRETON",
+      "prenom": "Frederic",
+      "ville": "Brest",
+      "avatar": "avatar.png",
+      "anecdotes": "Toujours curieux des nouvelles technos web."
+    },
+    {
+      "id": 5,
+      "nom": "D'AUSBOURG",
+      "prenom": "Marie",
+      "ville": "Angers",
+      "avatar": "avatar.png",
+      "anecdotes": "Très organisée, fan de Trello et Notion."
+    },
+    {
+      "id": 6,
+      "nom": "GUITTARD",
+      "prenom": "Jason",
+      "ville": "Tours",
+      "avatar": "avatar.png",
+      "anecdotes": "Apprécie particulièrement le travail en équipe."
+    },
+    {
+      "id": 7,
+      "nom": "LEPETIT",
+      "prenom": "Pierre-Yves",
+      "ville": "Nantes",
+      "avatar": "avatar.png",
+      "anecdotes": "Toujours une blague pour détendre l'ambiance."
+    },
+    {
+      "id": 8,
+      "nom": "MATHIEU",
+      "prenom": "Clement",
+      "ville": "Annecy",
+      "avatar": "avatar.png",
+      "anecdotes": "Très à l'aise avec Flexbox et Grid."
+    },
+    {
+      "id": 9,
+      "nom": "NARROS",
+      "prenom": "Swan",
+      "ville": "Montpellier",
+      "avatar": "avatar.png",
+      "anecdotes": "Passionné par l'UX et l'accessibilité."
+    },
+    {
+      "id": 10,
+      "nom": "PEDARROS",
+      "prenom": "Nicolas",
+      "ville": "Pau",
+      "avatar": "avatar.png",
+      "anecdotes": "Toujours prêt à tester les fonctionnalités en premier."
+    },
+    {
+      "id": 11,
+      "nom": "ROUX",
+      "prenom": "Sebastien",
+      "ville": "Clermont-Ferrand",
+      "avatar": "avatar.png",
+      "anecdotes": "Aime comprendre le fonctionnement interne des frameworks."
+    },
+    {
+      "id": 12,
+      "nom": "SALEMBIEN",
+      "prenom": "William",
+      "ville": "Arras",
+      "avatar": "avatar.png",
+      "anecdotes": "Très méthodique dans son code."
+    },
+    {
+      "id": 13,
+      "nom": "TOUZANI",
+      "prenom": "Reda",
+      "ville": "Lyon",
+      "avatar": "avatar.png",
+      "anecdotes": "Toujours attentif à la structure et à la propreté du projet."
+    },
+    {
+      "id": 14,
+      "nom": "VILLAPADIERNA",
+      "prenom": "Hugo",
+      "ville": "Bayonne",
+      "avatar": "avatar.png",
+      "anecdotes": "Aime expérimenter différentes approches de code."
+    },
+    {
+      "id": 15,
+      "nom": "VOGT",
+      "prenom": "Marie-Claire",
+      "ville": "Strasbourg",
+      "avatar": "avatar.png",
+      "anecdotes": "Très rigoureuse sur les bonnes pratiques."
+    }
+  ]
+}

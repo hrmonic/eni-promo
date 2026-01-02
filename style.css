@@ -1,43 +1,101 @@
+/* ============================================================
+   VARIABLES CSS GLOBALES
+============================================================ */
+:root {
+    --bg-color: rgb(11, 50, 84);
+    --text-color: white;
+
+    --header-bg: linear-gradient(to left, #769ab9, #ffffff);
+    --header-text: rgb(11, 50, 84);
+
+    --menu-bg: #ffffff;
+    --menu-text: rgb(11, 50, 84);
+    --menu-border: rgb(11, 50, 84);
+    --menu-hover-bg: rgb(11, 50, 84);
+    --menu-hover-text: white;
+    --menu-hover-shadow: rgba(255, 255, 255, 0.65);
+
+    --button-bg: #ffffff;
+    --button-text: rgb(11, 50, 84);
+    --button-border: rgb(11, 50, 84);
+    --button-hover-bg: rgb(11, 50, 84);
+    --button-hover-text: white;
+
+    --footer-bg: linear-gradient(to left, #769ab97d, #ffffff);
+    --footer-text: rgb(11, 50, 84);
+
+    --select-bg: #ffffff;
+    --select-text: rgb(11, 50, 84);
+    --select-border: rgb(11, 50, 84);
+}
+
+/* ============================================================
+   THÈME CLAIR
+============================================================ */
+body.light-theme {
+    --bg-color: #f0f0f0;
+    --text-color: black;
+
+    --header-bg: linear-gradient(to left, #ffffff, #769ab9);
+    --header-text: black;
+
+    --menu-text: black;
+    --menu-hover-bg: white;
+    --menu-hover-text: rgb(11, 50, 84);
+    --menu-hover-shadow: rgba(0, 0, 0, 0.2);
+
+    --button-text: black;
+    --footer-text: black;
+    --select-text: black;
+}
+
+/* ============================================================
+   RESET & BASE
+============================================================ */
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
     margin: 1rem;
-    background-color: rgb(11, 50, 84);
-    color: white;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     font-family: monospace;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* ============================================================
+   HEADER
+============================================================ */
 header {
     position: sticky;
     top: 0;
+    z-index: 10;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    flex-shrink: 0;
+    align-items: center;
     padding: 0.5rem;
-    background: linear-gradient(to left, #769ab9, #ffffff);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.61);
+    background: var(--header-bg);
     border-radius: 0.5rem;
-    color: rgb(11, 50, 84);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
     margin-bottom: 1rem;
-
 }
 
-.header-gauche {
+.header-gauche,
+.header-droite {
     display: flex;
     align-items: center;
     gap: 1rem;
+}
+
+.header-droite {
+    flex-direction: column;
 }
 
 h1 {
-    justify-content: center;
-    gap: 1rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin-left: 1rem;
-    margin-right: 1rem;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
 }
 
 h2 {
@@ -45,15 +103,9 @@ h2 {
     margin-bottom: 1rem;
 }
 
-.header-droite {
-    display: flex;
-    flex-flow: column wrap;
-    align-items: center;
-
-    gap: 0.75rem;
-}
-
-
+/* ============================================================
+   MENU
+============================================================ */
 .menu {
     display: flex;
     gap: 1rem;
@@ -62,103 +114,112 @@ h2 {
 
 .menu a {
     display: flex;
-    font-size: 1.2rem;
-    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     padding: 0.5rem;
-    text-decoration: none;
+    font-size: 1.2rem;
     font-weight: 600;
-    color: rgb(11, 50, 84);
-    border: 2px solid rgb(11, 50, 84);
+    text-decoration: none;
+    color: var(--menu-text);
+    background-color: var(--menu-bg);
+    border: 2px solid var(--menu-border);
     border-radius: 10%;
-    box-shadow: 0 2px 3px rgba(16, 0, 0, 0.771);
-    background-color: #ffffff;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.7);
     transition: all 0.2s ease;
 }
 
 .menu a:hover {
-    color: white;
-    background-color: rgb(11, 50, 84);
+    color: var(--menu-hover-text);
+    background-color: var(--menu-hover-bg);
     transform: translateY(-3px);
-    box-shadow: 3px 3px 3px rgba(255, 255, 255, 0.658);
+    box-shadow: 3px 3px 3px var(--menu-hover-shadow);
 }
 
+/* ============================================================
+   TYPE D’AFFICHAGE (HEADER)
+============================================================ */
 .type-affichage {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    border: none;
-    padding: 0;
-    margin: 0;
-    cursor: pointer;
     font-size: 1.2rem;
-    margin-top: 0.25rem;
 }
 
-.type-affichage-choix {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-
+body.preferences .type-affichage,
 body.informations .type-affichage {
     visibility: hidden;
 }
 
-body.preferences .type-affichage {
-    visibility: hidden;
-}
-
-.tableau {
-    width: 100%;
-    border-collapse: separate;
-        border-spacing: 0;
-    background: #ffffff1c;
-    font-size: 0.9375rem;
-    line-height: 1.6;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    border-radius: 0.5rem;
-    overflow: hidden;
-}
-
-.tableau thead {
-    background-color: gray;
-}
-
-.tableau th {
-    position: sticky;
-    top: 0;
-}
-
-.tableau thead th {
-    position: sticky;
-    top: 0;
-    z-index: 2;
-    background-color: gray;
-}
-
-
-
-.tableau tr {
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.tableau tr:hover {
-    background-color: rgb(6, 25, 42);
-}
-
-.tableau td {
-    padding: 2rem;
-    border-bottom: 1.5px solid #cccccca2;
-}
-
+/* ============================================================
+   TABLEAU
+============================================================ */
 .tableau-scroll {
     max-height: calc(100vh - 260px);
     overflow-y: auto;
 }
 
+.tableau {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.95rem;
+}
+
+.tableau thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: gray;
+}
+
+.tableau th,
+.tableau td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 2rem;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Hover sombre */
+.tableau tr:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Hover clair */
+body.light-theme .tableau tr:hover {
+    background-color: #e6eef6;
+    color: #000;
+}
+
+/* ============================================================
+   ACTIONS (ICÔNES)
+============================================================ */
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.actions a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    padding: 0.35rem;
+    border-radius: 0.4rem;
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.actions a:hover {
+    transform: scale(1.15) translateY(-2px);
+    background-color: var(--menu-hover-bg);
+    color: var(--menu-hover-text);
+}
+
+/* ============================================================
+   PAGE INFORMATIONS – STRUCTURE FLEX
+============================================================ */
 .infos {
     text-align: center;
     margin-bottom: 2rem;
@@ -166,176 +227,160 @@ body.preferences .type-affichage {
 
 .mesblocs {
     display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: flex-start;
     flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-around;
-
 }
 
-.container1 {
-    flex: 1;
-    border: 2px solid rgba(255, 255, 255, 0.4);
-    padding: 1rem;
-    border-radius: 0.5rem;
-    box-sizing: border-box;
-}
-
+.container1,
 .container2 {
-    flex: 1;
-    border: 2px solid rgba(255, 255, 255, 0.4);
-    padding: 1rem;
+    flex: 1 1 45%;
+    padding: 1.5rem;
     border-radius: 0.5rem;
-    box-sizing: border-box;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+body.light-theme .container1,
+body.light-theme .container2 {
+    border-color: rgba(11, 50, 84, 0.2);
 }
 
 .container2 a {
-    text-decoration: none;
     color: aqua;
-
-}
-
-
-footer {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding: 1rem;
-    justify-content: center;
-    background: linear-gradient(to left, #769ab97d, #ffffff);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.61);
-    border-radius: 0.5rem;
-    color: rgb(11, 50, 84);
-    margin-top: 1rem;
-}
-
-.container1 li {
-    margin-left: 2rem;
-}
-
-.actions {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-
-}
-
-.actions a {
     text-decoration: none;
-    color: white;
-    cursor: pointer;
-    transition: all 0.2s ease;
 }
 
-.actions a:hover {
-    background-color: white;
+body.light-theme .container2 a {
     color: rgb(11, 50, 84);
-    border-radius: 15%;
-    box-shadow: 2px pink;
-    transform: translateY(-3px);
 }
 
+body.informations .bouton {
+    margin: 2rem auto 0;
+    display: flex;
+    width: fit-content;
+}
+
+/* ============================================================
+   FORMULAIRE PRÉFÉRENCES
+============================================================ */
 .parametres {
+    max-width: 800px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    max-width: 800px;
-    margin: 0 auto;
 }
 
 .ligne-parametre {
     display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
+    grid-template-columns: 320px auto;
     gap: 2rem;
 }
 
-.type-affichage-choix {
-    display: flex;
-    align-items: center;
-    gap: 1.25rem;
+.label-parametre {
+    font-weight: 600;
 }
 
 .affichage-choix-parametres {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
-    align-items: flex-start;
 }
 
-.position-radio {
+.radio-ligne {
     display: flex;
-    flex-direction: row-reverse;
     align-items: center;
-    justify-content: flex-end;
-    gap: 0.5rem;
+    gap: 0.6rem;
     cursor: pointer;
-
 }
 
+/* ============================================================
+   BOUTONS (UNIFIÉS)
+============================================================ */
 .bouton {
-    display: flex;
+    text-decoration: none;
+    display: inline-flex;
     justify-content: center;
+    align-items: center;
+    padding: 0.6rem 1.2rem;
+    font-family: monospace;
+    font-weight: 600;
+    font-size: 1.1rem;
+
+    color: var(--button-text);
+    background-color: var(--button-bg);
+    border: 2px solid var(--button-border);
+    border-radius: 10%;
+    box-shadow: 0 2px 3px rgba(16, 0, 0, 0.77);
+
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
-.bouton a,
-.bouton button {
-  margin-top: 2rem;
-  text-decoration: none;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.5rem;
-  font-weight: 600;
-  color: rgb(11, 50, 84);
-  border: 2px solid rgb(11, 50, 84);
-  border-radius: 10%;
-  box-shadow: 0 2px 3px rgba(16, 0, 0, 0.771);
-  background-color: #ffffff;
-  transition: all 0.2s ease;
-  cursor: pointer;
-  font-size: inherit; 
-}
-
-.bouton a:hover,
-.bouton button:hover {
-  color: white;
-  background-color: rgb(11, 50, 84);
-  transform: translateY(-3px);
-  box-shadow: 3px 3px 3px rgba(255, 255, 255, 0.658);
-}
-
-.bouton button:hover {
-    color: white;
-    background-color: rgb(11, 50, 84);
+.bouton:hover {
+    color: var(--button-hover-text);
+    background-color: var(--button-hover-bg);
     transform: translateY(-3px);
-    box-shadow: 3px 3px 3px rgba(255, 255, 255, 0.658);
+    box-shadow: 3px 3px 3px var(--menu-hover-shadow);
 }
 
 .boutons-parametres {
     display: flex;
     justify-content: center;
     gap: 2rem;
-    margin-top: 1rem;
-    font-size: 1.2rem;
+    margin-top: 3rem;
+}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width: 1024px) {
+    .menu {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .ligne-parametre {
+        grid-template-columns: 260px auto;
+    }
 }
 
 @media (max-width: 600px) {
-
-    .header-gauche,
-    .header-droite {
+    header {
         flex-direction: column;
-        align-items: center;
-        gap: 0.5rem;
+        gap: 1rem;
     }
 
     .menu {
         flex-direction: column;
-        gap: 0.5rem;
+        width: 100%;
+    }
+
+    .menu a {
+        width: 100%;
     }
 
     .ligne-parametre {
         grid-template-columns: 1fr;
-        gap: 1rem;
-        margin-bottom: 1rem;
+    }
+
+    .boutons-parametres {
+        flex-direction: column;
+    }
+
+    .tableau th,
+    .tableau td {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 400px) {
+    h1 {
+        font-size: 1.2rem;
+    }
+
+    h2 {
+        font-size: 1.1rem;
     }
 }

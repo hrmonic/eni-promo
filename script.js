@@ -1,65 +1,107 @@
-window.addEventListener("DOMContentLoaded", init);
+/* ============================================================
+   1) CLÉS DU LOCALSTORAGE
+   ------------------------------------------------------------
+   Ces constantes servent à stocker les préférences du site.
+============================================================ */
 
-// J'initialise les paramètres en lisant le localStorage
-function init() {
-    const stored = localStorage.getItem("parametres");
+const THEME_KEY = "site-theme";
+const DISPLAY_KEY = "site-display";
 
-    if (stored) {
-        try {
-            const parametres = JSON.parse(stored);
+/* ============================================================
+   2) VALEURS PAR DÉFAUT
+   ------------------------------------------------------------
+   Si aucune préférence n’existe encore, on en crée une.
+============================================================ */
 
-            // Appliquer le thème si l'élément existe
-            const selectTheme = document.querySelector('select[name="theme"]');
-            if (selectTheme && parametres.theme) {
-                selectTheme.value = parametres.theme;
-            }
-
-            // Appliquer le type d'affichage (on cible le formulaire pour éviter
-            // les radios du header qui ont le même name)
-            if (parametres.affichage) {
-                const affich = String(parametres.affichage).toLowerCase();
-                const radio = document.querySelector(
-                    `form.parametres input[name="affichage"][value="${affich}"]`
-                );
-                if (radio) radio.checked = true;
-            }
-        } catch (erreur) {
-            console.warn("parametres localStorage non valides :", erreur);
-        }
-    }
-
-    // Enregistrer le listener après que le DOM soit prêt
-    const saveBtn = document.getElementById("save");
-    if (saveBtn) {
-        saveBtn.addEventListener("click", savePreferences);
-    } else {
-        console.warn('Bouton "#save" introuvable.');
-    }
+// Thème
+let savedTheme = localStorage.getItem(THEME_KEY);
+if (savedTheme === null) {
+    savedTheme = "sombre";
+    localStorage.setItem(THEME_KEY, savedTheme);
 }
 
-// Sauvegarde des préférences dans le localStorage
-function savePreferences(event) {
-    if (event && typeof event.preventDefault === 'function') event.preventDefault();
+// Affichage
+let savedDisplay = localStorage.getItem(DISPLAY_KEY);
+if (savedDisplay === null) {
+    savedDisplay = "liste";
+    localStorage.setItem(DISPLAY_KEY, savedDisplay);
+}
 
-    const select = document.querySelector('select[name="theme"]');
-    const radio = document.querySelector('form.parametres input[name="affichage"]:checked');
+/* ============================================================
+   3) APPLICATION DU THÈME
+============================================================ */
 
-    if (!select || !radio) {
-        console.warn("Sélecteur de thème ou bouton radio introuvable / non sélectionné.");
-        return;
-    }
+// On nettoie d’abord les classes existantes
+document.body.classList.remove("light-theme", "sombre-theme");
 
-    const theme = select.value;
-    const affichage = radio.value;
+// Puis on applique le bon thème
+if (savedTheme === "clair") {
+    document.body.classList.add("light-theme");
+} else {
+    document.body.classList.add("sombre-theme");
+}
 
-    const parametres = {
-        theme,
-        affichage
-    };
+/* ============================================================
+   4) APPLICATION DU MODE D’AFFICHAGE
+============================================================ */
 
-    try {
-        localStorage.setItem("parametres", JSON.stringify(parametres));
-    } catch (erreur) {
-        console.error("Impossible d'enregistrer dans localStorage :", erreur);
-    }
+// On enlève les anciennes classes
+document.body.classList.remove("display-liste", "display-cartes");
+
+// Puis on applique la bonne
+if (savedDisplay === "cartes") {
+    document.body.classList.add("display-cartes");
+} else {
+    document.body.classList.add("display-liste");
+}
+
+/* ============================================================
+   5) SYNCHRONISATION DES RADIOS DU HEADER
+   (si présents sur la page)
+============================================================ */
+
+const headerRadios = document.querySelectorAll('input[name="affichageHeader"]');
+
+headerRadios.forEach(function (radio) {
+    radio.checked = (radio.value === savedDisplay);
+});
+
+/* ============================================================
+   6) PAGE PRÉFÉRENCES
+   ------------------------------------------------------------
+   Synchroniser le formulaire et enregistrer les choix
+============================================================ */
+
+const form = document.getElementById("preferencesForm");
+
+if (form !== null) {
+
+    const themeSelect = document.getElementById("themeSelect");
+
+    // Mettre le thème actuel dans le select
+    themeSelect.value = savedTheme;
+
+    // Synchroniser les radios du formulaire
+    const formRadios = form.querySelectorAll('input[name="affichage"]');
+    formRadios.forEach(function (radio) {
+        radio.checked = (radio.value === savedDisplay);
+    });
+
+    // Quand on clique sur "Enregistrer"
+    form.addEventListener("submit", function (event) {
+
+        event.preventDefault(); // empêche le rechargement automatique
+
+        const selectedTheme = themeSelect.value;
+
+        const checkedRadio = form.querySelector('input[name="affichage"]:checked');
+        const selectedDisplay = checkedRadio ? checkedRadio.value : "liste";
+
+        // Sauvegarde dans le localStorage
+        localStorage.setItem(THEME_KEY, selectedTheme);
+        localStorage.setItem(DISPLAY_KEY, selectedDisplay);
+
+        // Recharge la page pour appliquer les préférences
+        location.reload();
+    });
 }

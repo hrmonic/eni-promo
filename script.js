@@ -115,19 +115,19 @@ fetch("promo.json")
         data.apprenants.forEach(apprenant => {
             const tr = document.createElement("tr");
 
-            tr.innerHTML = `
-                <td>${apprenant.nom}</td>
+            tr.innerHTML = 
+                `<td>${apprenant.nom}</td>
                 <td>${apprenant.prenom}</td>
                 <td>${apprenant.ville}</td>
-                <td class="actions">
-                    <a href="#" title="Voir" aria-label="Voir ${apprenant.prenom} ${apprenant.nom}">
-                        <i class="fa-solid fa-eye"></i>
+                <td class="actions"> 
+                    <a href="#" title="Voir" aria-label="Voir ${apprenant.prenom} ${apprenant.nom}"> 
+                    <i class="fa-solid fa-eye"></i>
                     </a>
                     <a href="#" title="Modifier" aria-label="Modifier ${apprenant.prenom} ${apprenant.nom}">
-                        <i class="fa-solid fa-square-pen"></i>
+                    <i class="fa-solid fa-square-pen"></i>
                     </a>
                     <a href="#" title="Supprimer" aria-label="Supprimer ${apprenant.prenom} ${apprenant.nom}">
-                        <i class="fa-solid fa-trash"></i>
+                    <i class="fa-solid fa-trash"></i>
                     </a>
                 </td>`;
             tbody.appendChild(tr);

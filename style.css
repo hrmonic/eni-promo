@@ -8,6 +8,9 @@
     --header-bg: linear-gradient(to left, #769ab9, #ffffff);
     --header-text: rgb(11, 50, 84);
 
+    --h1-text-shadow:
+        2px 2px 4px rgba(0, 0, 0, 0.6),
+        -2px -2px 4px rgba(255, 255, 255, 0.3);
     --menu-bg: #ffffff;
     --menu-text: rgb(11, 50, 84);
     --menu-border: rgb(11, 50, 84);
@@ -19,6 +22,7 @@
     --button-text: rgb(11, 50, 84);
     --button-border: rgb(11, 50, 84);
     --button-hover-bg: rgb(11, 50, 84);
+    --button-hover-color: white;
     --button-hover-text: white;
 
     --footer-bg: linear-gradient(to left, #769ab97d, #ffffff);
@@ -27,6 +31,14 @@
     --select-bg: #ffffff;
     --select-text: rgb(11, 50, 84);
     --select-border: rgb(11, 50, 84);
+
+    --cartes-bg: rgba(11, 50, 84, 0.4);
+    --cartes-border: rgba(255, 255, 255, 0.4);
+    --cartes-hover-bg: rgba(11, 50, 84, 0.6);
+    --cartes-hover-border: rgba(255, 255, 255, 0.6);
+    --cartes-text: white;
+    --cartes-hover-text: white;
+    --cartes-shadow: rgba(0, 0, 0, 0.6);
 }
 
 /* ============================================================
@@ -47,6 +59,16 @@ body.light-theme {
     --button-text: black;
     --footer-text: black;
     --select-text: black;
+
+    --cartes-bg: rgba(240, 240, 240, 0.8);
+    --cartes-border: rgba(11, 50, 84, 0.2);
+    --cartes-shadow: rgba(0, 0, 0, 0.2);
+    --cartes-text: rgb(11, 50, 84);
+    --cartes-hover-text: rgb(11, 50, 84);
+    --cartes-hover-border: rgba(11, 50, 84, 0.4);
+    --cartes-hover-bg: rgba(240, 240, 240, 1);
+
+    --h1-text-shadow: none;
 }
 
 /* ============================================================
@@ -96,6 +118,7 @@ header {
 
 h1 {
     font-family: 'Segoe UI', Tahoma, sans-serif;
+    text-shadow: var(--h1-text-shadow);
 }
 
 h2 {
@@ -123,7 +146,7 @@ h2 {
     color: var(--menu-text);
     background-color: var(--menu-bg);
     border: 2px solid var(--menu-border);
-    border-radius: 10%;
+    border-radius: 10PX;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.7);
     transition: all 0.2s ease;
 }
@@ -135,6 +158,21 @@ h2 {
     box-shadow: 3px 3px 3px var(--menu-hover-shadow);
 }
 
+/* Checkbox cachée (état du menu) */
+.menu-toggle-checkbox {
+    display: none;
+}
+
+/* Bouton hamburger */
+.menu-toggle {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--menu-text);
+}
+
 /* ============================================================
    TYPE D’AFFICHAGE (HEADER)
 ============================================================ */
@@ -143,6 +181,10 @@ h2 {
     align-items: center;
     gap: 0.75rem;
     font-size: 1.2rem;
+    border: none;
+    padding: 0;
+    margin: 0;
+
 }
 
 body.preferences .type-affichage,
@@ -180,15 +222,36 @@ body.informations .type-affichage {
     border-bottom: 1px solid #ccc;
 }
 
-/* Hover sombre */
-.tableau tr:hover {
-    background-color: rgba(255, 255, 255, 0.08);
+/* ============================================================
+   CARTES
+============================================================ */
+.cartes-apprenants {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+    justify-items: center;
 }
 
-/* Hover clair */
-body.light-theme .tableau tr:hover {
-    background-color: #e6eef6;
-    color: #000;
+.carte {
+    text-decoration: none;
+    width: 100%;
+    max-width: 400px;
+    color: var(--cartes-text);
+    background-color: var(--cartes-bg);
+    border: 2px solid var(--cartes-border);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    box-shadow: 0 2px 6px var(--cartes-shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-align: center;
+    gap: 1rem;
+}
+
+.carte:hover {
+    background-color: var(--cartes-hover-bg);
+    border-color: var(--cartes-hover-border);
+    color: var(--cartes-hover-text);
+    box-shadow: 0 4px 12px var(--cartes-shadow);
 }
 
 /* ============================================================
@@ -311,7 +374,8 @@ body.informations .bouton {
     color: var(--button-text);
     background-color: var(--button-bg);
     border: 2px solid var(--button-border);
-    border-radius: 10%;
+    border-color: var(--button-border-hover-color);
+    border-radius: 10px;
     box-shadow: 0 2px 3px rgba(16, 0, 0, 0.77);
 
     cursor: pointer;
@@ -321,8 +385,8 @@ body.informations .bouton {
 .bouton:hover {
     color: var(--button-hover-text);
     background-color: var(--button-hover-bg);
-    transform: translateY(-3px);
-    box-shadow: 3px 3px 3px var(--menu-hover-shadow);
+    transform: translateY(-5px);
+    box-shadow: 3px 3px 3px rgba(255, 255, 255, 0.65);
 }
 
 .boutons-parametres {
@@ -332,55 +396,156 @@ body.informations .bouton {
     margin-top: 3rem;
 }
 
-/* ============================================================
-   RESPONSIVE
-============================================================ */
-@media (max-width: 1024px) {
-    .menu {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .ligne-parametre {
-        grid-template-columns: 260px auto;
-    }
+span.bouton {
+    font-size: 0.1rem;
+    padding: 0.4rem 0.8rem;
 }
 
-@media (max-width: 600px) {
+.carte .bouton {
+    margin-top: 0.5rem;
+    font-size: 0.7rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.4rem;
+}
+
+.carte .bouton:hover {
+    border-color: white;
+    box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.6);
+    transform: translateY(-2px);
+
+}
+
+/* ============================================================
+   RESPONSIVE – MOBILE FIRST
+============================================================ */
+
+/* MOBILE (≤ 575.98px) */
+@media (max-width: 575.98px) {
+
     header {
         flex-direction: column;
-        gap: 1rem;
+        align-items: center;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
+    .header-gauche {
+        justify-content: center;
+        width: 100%;
+    }
+
+    /* Hamburger visible */
+    .menu-toggle {
+        display: block;
+    }
+
+    /* Menu caché */
+    .header-droite {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 0.5rem;
+    }
+
+    /* Menu ouvert */
+    .menu-toggle-checkbox:checked + .menu-toggle + .header-droite {
+        display: flex;
     }
 
     .menu {
         flex-direction: column;
-        width: 100%;
+        align-items: center;
+        gap: 0.4rem;
     }
 
-    .menu a {
-        width: 100%;
+    /* Type d’affichage sous le menu */
+    .type-affichage {
+        font-size: 0.9rem;
+        justify-content: center;
+        margin-top: 0.5rem;
     }
 
-    .ligne-parametre {
+    .cartes-apprenants {
         grid-template-columns: 1fr;
     }
 
-    .boutons-parametres {
-        flex-direction: column;
-    }
-
-    .tableau th,
-    .tableau td {
-        padding: 1rem;
+    .carte {
+        max-width: 100%;
     }
 }
 
-@media (max-width: 400px) {
-    h1 {
-        font-size: 1.2rem;
+/* TABLETTE (≥ 576px) */
+@media (min-width: 576px) {
+
+    .menu-toggle {
+        display: none;
     }
 
-    h2 {
-        font-size: 1.1rem;
+    header {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .header-droite {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .cartes-apprenants {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .carte {
+        max-width: 300px;
+    }
+}
+
+/* TABLETTE LARGE (≥ 768px) */
+@media (min-width: 768px) {
+
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .header-droite {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cartes-apprenants {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .carte {
+        max-width: 350px;
+    }
+}
+
+/* DESKTOP (≥ 992px) */
+@media (min-width: 992px) {
+
+    .cartes-apprenants {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .carte {
+        max-width: 400px;
+    }
+}
+
+/* LARGE DESKTOP (≥ 1200px) */
+@media (min-width: 1200px) {
+
+    .cartes-apprenants {
+        grid-template-columns: repeat(6, 1fr);
     }
 }

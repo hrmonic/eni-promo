@@ -22,6 +22,10 @@
 
         <h1>Promo EDWM2511FT</h1>
 
+        <input type="checkbox" id="menu-toggle" class="menu-toggle-checkbox">
+
+        <label for="menu-toggle" class="menu-toggle" aria-label="Ouvrir le menu">☰</label>
+
         <nav class="header-droite">
             <ul class="menu">
                 <li><a href="index.html">Accueil </a></li>
@@ -47,22 +51,103 @@
     <main>
 
         <h2>Liste des apprenants</h2>
-        <div class="tableau-scroll">
-            <table class="tableau">
-                <thead>
-                    <tr>
-                        <th>Nom</th>
-                        <th>Prénom</th>
-                        <th>Ville</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
+        <section class="apprenants"> <!--création de la class pour regrouper les deux affichages pour le JS-->
+            <div class="tableau-scroll" hidden>
+                <table class="tableau">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Ville</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
 
-                <tbody id="liste-apprenants">
-                <!-- Les apprenants seront insérés ici dynamiquement via JavaScript -->
-                </tbody>
-            </table>
-        </div>
+                    <tbody id="liste-apprenants">
+                        <!-- Les apprenants seront insérés ici dynamiquement via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="cartes-apprenants" id="cartes-apprenants">
+                <a href="#" class="carte" aria-label="Voir les détails de Prénom Nom">
+                    <h3>Prénom Nom</h3>
+                    <p>Ville : Paris</p>
+                    <span class="bouton">Détails</span>
+                </a>
+                <a href="#" class="carte" aria-label="Voir les détails de Prénom Nom">
+                    <h3>Prénom Nom</h3>
+                    <p>Ville : Paris</p>
+                    <span class="bouton">Détails</span>
+                </a>
+                <a href="#" class="carte" aria-label="Voir les détails de Prénom Nom">
+                    <h3>Prénom Nom</h3>
+                    <p>Ville : Paris</p>
+                    <span class="bouton">Détails</span>
+                </a>
+                <a href="#" class="carte" aria-label="Voir les détails de Prénom Nom">
+                    <h3>Prénom Nom</h3>
+                    <p>Ville : Paris</p>
+                    <span class="bouton">Détails</span>
+                </a>
+                <a href="#" class="carte" aria-label="Voir les détails de Prénom Nom">
+                    <h3>Prénom Nom</h3>
+                    <p>Ville : Paris</p>
+                    <span class="bouton">Détails</span>
+                </a>
+                <a href="#" class="carte" aria-label="Voir les détails de Prénom Nom">
+                    <h3>Prénom Nom</h3>
+                    <p>Ville : Paris</p>
+                    <span class="bouton">Détails</span>
+                </a>
+                <a href="#" class="carte" aria-label="Voir les détails de Prénom Nom">
+                    <h3>Prénom Nom</h3>
+                    <p>Ville : Paris</p>
+                    <span class="bouton">Détails</span>
+                </a>
+                <a href="#" class="carte" aria-label="Voir les détails de Prénom Nom">
+                    <h3>Prénom Nom</h3>
+                    <p>Ville : Paris</p>
+                    <span class="bouton">Détails</span>
+                </a>
+                <a href="#" class="carte" aria-label="Voir les détails de Prénom Nom">
+                    <h3>Prénom Nom</h3>
+                    <p>Ville : Paris</p>
+                    <span class="bouton">Détails</span>
+                </a>
+                <a href="#" class="carte" aria-label="Voir les détails de Prénom Nom">
+                    <h3>Prénom Nom</h3>
+                    <p>Ville : Paris</p>
+                    <span class="bouton">Détails</span>
+                </a>
+                <a href="#" class="carte" aria-label="Voir les détails de Prénom Nom">
+                    <h3>Prénom Nom</h3>
+                    <p>Ville : Paris</p>
+                    <span class="bouton">Détails</span>
+                </a>
+                <a href="#" class="carte" aria-label="Voir les détails de Prénom Nom">
+                    <h3>Prénom Nom</h3>
+                    <p>Ville : Paris</p>
+                    <span class="bouton">Détails</span>
+                </a>
+                <a href="#" class="carte" aria-label="Voir les détails de Prénom Nom">
+                    <h3>Prénom Nom</h3>
+                    <p>Ville : Paris</p>
+                    <span class="bouton">Détails</span>
+                </a>
+                <a href="#" class="carte" aria-label="Voir les détails de Prénom Nom">
+                    <h3>Prénom Nom</h3>
+                    <p>Ville : Paris</p>
+                    <span class="bouton">Détails</span>
+                </a>
+                <a href="#" class="carte" aria-label="Voir les détails de Prénom Nom">
+                    <h3>Prénom Nom</h3>
+                    <p>Ville : Paris</p>
+                    <span class="bouton">Détails</span>
+                </a>
+            </div>
+        </section>
+
     </main>
 
     <footer>

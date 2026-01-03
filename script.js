@@ -1,6 +1,5 @@
 /* ============================================================
    1) CLÉS DU LOCALSTORAGE
-   ------------------------------------------------------------
    Ces constantes servent à stocker les préférences du site.
 ============================================================ */
 
@@ -9,7 +8,6 @@ const DISPLAY_KEY = "site-display";
 
 /* ============================================================
    2) VALEURS PAR DÉFAUT
-   ------------------------------------------------------------
    Si aucune préférence n’existe encore, on en crée une.
 ============================================================ */
 
@@ -68,7 +66,6 @@ headerRadios.forEach(function (radio) {
 
 /* ============================================================
    6) PAGE PRÉFÉRENCES
-   ------------------------------------------------------------
    Synchroniser le formulaire et enregistrer les choix
 ============================================================ */
 
@@ -105,3 +102,37 @@ if (form !== null) {
         location.reload();
     });
 }
+
+/* ============================================================
+    7) PAGE LISTE DES APPRENANTS
+Charger les apprenants depuis le fichier JSON et les insérer
+============================================================ */
+
+fetch("promo.json")
+    .then(response => response.json())
+    .then(data => {
+        const tbody = document.getElementById("liste-apprenants");
+        data.apprenants.forEach(apprenant => {
+            const tr = document.createElement("tr");
+
+            tr.innerHTML = `
+                <td>${apprenant.nom}</td>
+                <td>${apprenant.prenom}</td>
+                <td>${apprenant.ville}</td>
+                <td class="actions">
+                    <a href="#" title="Voir" aria-label="Voir ${apprenant.prenom} ${apprenant.nom}">
+                        <i class="fa-solid fa-eye"></i>
+                    </a>
+                    <a href="#" title="Modifier" aria-label="Modifier ${apprenant.prenom} ${apprenant.nom}">
+                        <i class="fa-solid fa-square-pen"></i>
+                    </a>
+                    <a href="#" title="Supprimer" aria-label="Supprimer ${apprenant.prenom} ${apprenant.nom}">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
+                </td>`;
+            tbody.appendChild(tr);
+        });
+    })
+    .catch(error => {
+        console.error("Erreur lors du chargement du fichier JSON :", error);
+    });

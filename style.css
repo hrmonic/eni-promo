@@ -126,6 +126,12 @@ h2 {
     margin-bottom: 1rem;
 }
 
+header img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
 /* ============================================================
    MENU
 ============================================================ */
@@ -211,7 +217,8 @@ body.informations .type-affichage {
     position: sticky;
     top: 0;
     z-index: 1;
-    background-color: gray;
+    background-color: rgb(59, 59, 59);
+    color: white;
 }
 
 .tableau th,
@@ -422,6 +429,8 @@ span.bouton {
 /* MOBILE (≤ 575.98px) */
 @media (max-width: 575.98px) {
 
+    /* ================= HEADER ================= */
+
     header {
         flex-direction: column;
         align-items: center;
@@ -439,7 +448,7 @@ span.bouton {
         display: block;
     }
 
-    /* Menu caché */
+    /* Menu fermé par défaut */
     .header-droite {
         display: none;
         flex-direction: column;
@@ -459,11 +468,56 @@ span.bouton {
         gap: 0.4rem;
     }
 
-    /* Type d’affichage sous le menu */
+    /* Type d’affichage SOUS le menu */
     .type-affichage {
         font-size: 0.9rem;
         justify-content: center;
         margin-top: 0.5rem;
+    }
+
+    /* ================= TABLEAU ================= */
+
+    .tableau-scroll {
+        max-height: calc(100vh - 300px);
+    }
+
+    .tableau {
+        font-size: 0.8rem;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .tableau thead,
+    .tableau tbody,
+    .tableau tr {
+        display: contents;
+    }
+
+    .tableau th,
+    .tableau td {
+        padding: 0.5rem;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .tableau td.actions {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.5rem;
+    }
+
+    .tableau td.actions .voir {
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1rem;
+    }
+
+    .tableau td.actions .modifier,
+    .tableau td.actions .supprimer {
+        display: none;
     }
 
     .cartes-apprenants {
@@ -506,6 +560,26 @@ span.bouton {
     .carte {
         max-width: 300px;
     }
+
+    /* ================= TABLEAU ================= */
+    .tableau-scroll {
+        max-height: calc(100vh - 280px);
+    }
+    .tableau {
+        font-size: 0.9rem;
+    }   
+    .tableau th,
+    .tableau td {
+        padding: 1rem;
+    }   
+    .tableau td.actions .voir {
+        font-size: 1.2rem;
+    }   
+    .tableau td.actions .modifier,
+    .tableau td.actions .supprimer {
+        display: inline-flex;
+    }
+    
 }
 
 /* TABLETTE LARGE (≥ 768px) */

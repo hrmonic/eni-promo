@@ -16,7 +16,11 @@
     <header>
         <div class="header-gauche">
             <a href="index.html">
-                <img src="images/logo.png" alt="Logo ENI, lien vers l'accueil">
+                <img
+                    src="images/logo_scale_100.png"
+                    srcset="images/logo_scale_50.png 50w, images/logo_scale_100.png 100w"
+                    sizes="(max-width: 576px) 80px, 150px"
+                    alt="Logo Promo">
             </a>
         </div>
 
@@ -52,7 +56,7 @@
 
         <h2>Liste des apprenants</h2>
         <section class="apprenants"> <!--création de la class pour regrouper les deux affichages pour le JS-->
-            <div class="tableau-scroll" hidden>
+            <div class="tableau-scroll">
                 <table class="tableau">
                     <thead>
                         <tr>
@@ -70,81 +74,7 @@
             </div>
 
             <div class="cartes-apprenants" id="cartes-apprenants">
-                <a href="#" class="carte" aria-label="Voir les détails de Prénom Nom">
-                    <h3>Prénom Nom</h3>
-                    <p>Ville : Paris</p>
-                    <span class="bouton">Détails</span>
-                </a>
-                <a href="#" class="carte" aria-label="Voir les détails de Prénom Nom">
-                    <h3>Prénom Nom</h3>
-                    <p>Ville : Paris</p>
-                    <span class="bouton">Détails</span>
-                </a>
-                <a href="#" class="carte" aria-label="Voir les détails de Prénom Nom">
-                    <h3>Prénom Nom</h3>
-                    <p>Ville : Paris</p>
-                    <span class="bouton">Détails</span>
-                </a>
-                <a href="#" class="carte" aria-label="Voir les détails de Prénom Nom">
-                    <h3>Prénom Nom</h3>
-                    <p>Ville : Paris</p>
-                    <span class="bouton">Détails</span>
-                </a>
-                <a href="#" class="carte" aria-label="Voir les détails de Prénom Nom">
-                    <h3>Prénom Nom</h3>
-                    <p>Ville : Paris</p>
-                    <span class="bouton">Détails</span>
-                </a>
-                <a href="#" class="carte" aria-label="Voir les détails de Prénom Nom">
-                    <h3>Prénom Nom</h3>
-                    <p>Ville : Paris</p>
-                    <span class="bouton">Détails</span>
-                </a>
-                <a href="#" class="carte" aria-label="Voir les détails de Prénom Nom">
-                    <h3>Prénom Nom</h3>
-                    <p>Ville : Paris</p>
-                    <span class="bouton">Détails</span>
-                </a>
-                <a href="#" class="carte" aria-label="Voir les détails de Prénom Nom">
-                    <h3>Prénom Nom</h3>
-                    <p>Ville : Paris</p>
-                    <span class="bouton">Détails</span>
-                </a>
-                <a href="#" class="carte" aria-label="Voir les détails de Prénom Nom">
-                    <h3>Prénom Nom</h3>
-                    <p>Ville : Paris</p>
-                    <span class="bouton">Détails</span>
-                </a>
-                <a href="#" class="carte" aria-label="Voir les détails de Prénom Nom">
-                    <h3>Prénom Nom</h3>
-                    <p>Ville : Paris</p>
-                    <span class="bouton">Détails</span>
-                </a>
-                <a href="#" class="carte" aria-label="Voir les détails de Prénom Nom">
-                    <h3>Prénom Nom</h3>
-                    <p>Ville : Paris</p>
-                    <span class="bouton">Détails</span>
-                </a>
-                <a href="#" class="carte" aria-label="Voir les détails de Prénom Nom">
-                    <h3>Prénom Nom</h3>
-                    <p>Ville : Paris</p>
-                    <span class="bouton">Détails</span>
-                </a>
-                <a href="#" class="carte" aria-label="Voir les détails de Prénom Nom">
-                    <h3>Prénom Nom</h3>
-                    <p>Ville : Paris</p>
-                    <span class="bouton">Détails</span>
-                </a>
-                <a href="#" class="carte" aria-label="Voir les détails de Prénom Nom">
-                    <h3>Prénom Nom</h3>
-                    <p>Ville : Paris</p>
-                    <span class="bouton">Détails</span>
-                </a>
-                <a href="#" class="carte" aria-label="Voir les détails de Prénom Nom">
-                    <h3>Prénom Nom</h3>
-                    <p>Ville : Paris</p>
-                    <span class="bouton">Détails</span>
-                </a>
+                <!-- Les cartes des apprenants seront insérées ici dynamiquement via JavaScript -->
             </div>
         </section>
 

@@ -1,138 +1,192 @@
 /* ============================================================
-   1) CLÉS DU LOCALSTORAGE
-   Ces constantes servent à stocker les préférences du site.
+   1) CLÉS LOCALSTORAGE
 ============================================================ */
 
-const THEME_KEY = "site-theme";
-const DISPLAY_KEY = "site-display";
+const CLE_THEME = "site-theme";
+const CLE_AFFICHAGE = "site-display";
 
 /* ============================================================
    2) VALEURS PAR DÉFAUT
-   Si aucune préférence n’existe encore, on en crée une.
 ============================================================ */
 
-// Thème
-let savedTheme = localStorage.getItem(THEME_KEY);
-if (savedTheme === null) {
-    savedTheme = "sombre";
-    localStorage.setItem(THEME_KEY, savedTheme);
+if (!localStorage.getItem(CLE_THEME)) {
+    localStorage.setItem(CLE_THEME, "sombre");
 }
 
-// Affichage
-let savedDisplay = localStorage.getItem(DISPLAY_KEY);
-if (savedDisplay === null) {
-    savedDisplay = "liste";
-    localStorage.setItem(DISPLAY_KEY, savedDisplay);
+if (!localStorage.getItem(CLE_AFFICHAGE)) {
+    localStorage.setItem(CLE_AFFICHAGE, "liste");
 }
 
 /* ============================================================
    3) APPLICATION DU THÈME
 ============================================================ */
 
-// On nettoie d’abord les classes existantes
-document.body.classList.remove("light-theme", "sombre-theme");
+function appliquerTheme() {
+    const theme = localStorage.getItem(CLE_THEME);
+    document.body.classList.remove("light-theme", "sombre-theme");
 
-// Puis on applique le bon thème
-if (savedTheme === "clair") {
-    document.body.classList.add("light-theme");
-} else {
-    document.body.classList.add("sombre-theme");
+    if (theme === "clair") {
+        document.body.classList.add("light-theme");
+    } else {
+        document.body.classList.add("sombre-theme");
+    }
 }
 
 /* ============================================================
    4) APPLICATION DU MODE D’AFFICHAGE
 ============================================================ */
 
-// On enlève les anciennes classes
-document.body.classList.remove("display-liste", "display-cartes");
+function appliquerAffichage() {
+    const mode = localStorage.getItem(CLE_AFFICHAGE);
 
-// Puis on applique la bonne
-if (savedDisplay === "cartes") {
-    document.body.classList.add("display-cartes");
-} else {
-    document.body.classList.add("display-liste");
+    const blocListe = document.querySelector(".tableau-scroll");
+    const blocCartes = document.getElementById("cartes-apprenants");
+
+    if (!blocListe || !blocCartes) return;
+
+    if (mode === "cartes") {
+        blocListe.style.display = "none";
+        blocCartes.style.display = "grid";
+    } else {
+        blocCartes.style.display = "none";
+        blocListe.style.display = "block";
+    }
 }
 
 /* ============================================================
-   5) SYNCHRONISATION DES RADIOS DU HEADER
-   (si présents sur la page)
+   5) SYNCHRO DES RADIOS DU HEADER
 ============================================================ */
 
-const headerRadios = document.querySelectorAll('input[name="affichageHeader"]');
+function synchroniserHeader() {
+    const radiosHeader = document.querySelectorAll(
+        'header input[type="radio"][name="affichage"]'
+    );
 
-headerRadios.forEach(function (radio) {
-    radio.checked = (radio.value === savedDisplay);
-});
+    const mode = localStorage.getItem(CLE_AFFICHAGE);
+
+    radiosHeader.forEach(radio => {
+        radio.checked = (radio.value.toLowerCase() === mode);
+
+        radio.addEventListener("change", () => {
+            localStorage.setItem(CLE_AFFICHAGE, radio.value.toLowerCase());
+            appliquerAffichage();
+        });
+    });
+}
 
 /* ============================================================
    6) PAGE PRÉFÉRENCES
-   Synchroniser le formulaire et enregistrer les choix
 ============================================================ */
 
-const form = document.getElementById("preferencesForm");
+function gererPagePreferences() {
+    const formulaire = document.getElementById("preferencesForm");
+    if (!formulaire) return;
 
-if (form !== null) {
+    const selectTheme = document.getElementById("themeSelect");
+    const radiosAffichage = formulaire.querySelectorAll(
+        'input[name="affichage"]'
+    );
 
-    const themeSelect = document.getElementById("themeSelect");
+    selectTheme.value = localStorage.getItem(CLE_THEME);
 
-    // Mettre le thème actuel dans le select
-    themeSelect.value = savedTheme;
-
-    // Synchroniser les radios du formulaire
-    const formRadios = form.querySelectorAll('input[name="affichage"]');
-    formRadios.forEach(function (radio) {
-        radio.checked = (radio.value === savedDisplay);
+    radiosAffichage.forEach(radio => {
+        radio.checked =
+            radio.value === localStorage.getItem(CLE_AFFICHAGE);
     });
 
-    // Quand on clique sur "Enregistrer"
-    form.addEventListener("submit", function (event) {
+    formulaire.addEventListener("submit", event => {
+        event.preventDefault();
 
-        event.preventDefault(); // empêche le rechargement automatique
+        const themeChoisi = selectTheme.value;
+        const affichageChoisi = formulaire.querySelector(
+            'input[name="affichage"]:checked'
+        )?.value || "liste";
 
-        const selectedTheme = themeSelect.value;
+        localStorage.setItem(CLE_THEME, themeChoisi);
+        localStorage.setItem(CLE_AFFICHAGE, affichageChoisi);
 
-        const checkedRadio = form.querySelector('input[name="affichage"]:checked');
-        const selectedDisplay = checkedRadio ? checkedRadio.value : "liste";
-
-        // Sauvegarde dans le localStorage
-        localStorage.setItem(THEME_KEY, selectedTheme);
-        localStorage.setItem(DISPLAY_KEY, selectedDisplay);
-
-        // Recharge la page pour appliquer les préférences
         location.reload();
     });
 }
 
 /* ============================================================
-    7) PAGE LISTE DES APPRENANTS
-Charger les apprenants depuis le fichier JSON et les insérer
+   7) CHARGEMENT DES APPRENANTS – LISTE
 ============================================================ */
 
-fetch("promo.json")
-    .then(response => response.json())
-    .then(data => {
-        const tbody = document.getElementById("liste-apprenants");
-        data.apprenants.forEach(apprenant => {
-            const tr = document.createElement("tr");
+function chargerListe() {
+    const tbody = document.getElementById("liste-apprenants");
+    if (!tbody) return;
 
-            tr.innerHTML = 
-                `<td>${apprenant.nom}</td>
-                <td>${apprenant.prenom}</td>
-                <td>${apprenant.ville}</td>
-                <td class="actions"> 
-                    <a href="#" title="Voir" aria-label="Voir ${apprenant.prenom} ${apprenant.nom}"> 
-                    <i class="fa-solid fa-eye"></i>
-                    </a>
-                    <a href="#" title="Modifier" aria-label="Modifier ${apprenant.prenom} ${apprenant.nom}">
-                    <i class="fa-solid fa-square-pen"></i>
-                    </a>
-                    <a href="#" title="Supprimer" aria-label="Supprimer ${apprenant.prenom} ${apprenant.nom}">
-                    <i class="fa-solid fa-trash"></i>
-                    </a>
-                </td>`;
-            tbody.appendChild(tr);
-        });
-    })
-    .catch(error => {
-        console.error("Erreur lors du chargement du fichier JSON :", error);
-    });
+    fetch("promo.json")
+        .then(res => res.json())
+        .then(data => {
+            tbody.innerHTML = "";
+            data.apprenants.forEach(apprenant => {
+                const tr = document.createElement("tr");
+                tr.innerHTML = `
+                    <td>${apprenant.nom}</td>
+                    <td>${apprenant.prenom}</td>
+                    <td>${apprenant.ville}</td>
+                    <td class="actions">
+                        <a href="#" class="voir" aria-label="Voir ${apprenant.prenom} ${apprenant.nom}">
+                            <i class="fa-solid fa-eye"></i>
+                        </a>
+                        <a href="#" class="modifier" aria-label="Modifier ${apprenant.prenom} ${apprenant.nom}">
+                            <i class="fa-solid fa-square-pen"></i>
+                        </a>
+                        <a href="#" class="supprimer" aria-label="Supprimer ${apprenant.prenom} ${apprenant.nom}">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        })
+        .catch(err => console.error("Erreur JSON liste :", err));
+}
+
+/* ============================================================
+   8) CHARGEMENT DES APPRENANTS – CARTES
+============================================================ */
+
+function chargerCartes() {
+    const container = document.getElementById("cartes-apprenants");
+    if (!container) return;
+
+    fetch("promo.json")
+        .then(res => res.json())
+        .then(data => {
+            container.innerHTML = "";
+            data.apprenants.forEach(apprenant => {
+                const carte = document.createElement("a");
+                carte.href = "#";
+                carte.className = "carte";
+                carte.setAttribute(
+                    "aria-label",
+                    `Voir les détails de ${apprenant.prenom} ${apprenant.nom}`
+                );
+
+                carte.innerHTML = `
+                    <h3>${apprenant.prenom} ${apprenant.nom}</h3>
+                    <p>Ville : ${apprenant.ville}</p>
+                    <span class="bouton">Détails</span>
+                `;
+
+                container.appendChild(carte);
+            });
+        })
+        .catch(err => console.error("Erreur JSON cartes :", err));
+}
+
+/* ============================================================
+   9) INITIALISATION GLOBALE
+============================================================ */
+
+document.addEventListener("DOMContentLoaded", () => {
+    appliquerTheme();
+    appliquerAffichage();
+    synchroniserHeader();
+    gererPagePreferences();
+    chargerListe();
+    chargerCartes();
+});

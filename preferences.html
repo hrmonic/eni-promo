@@ -7,7 +7,6 @@
     <meta name="description" content="Page préférences du site.">
     <title>PromoENI - Préférences</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/d276115f7d.js" crossorigin="anonymous"></script>
     <script src="script.js" defer></script>
 
 
@@ -17,11 +16,17 @@
     <header>
         <div class="header-gauche">
             <a href="index.html">
-                <img src="images/logo.png" alt="Logo ENI, lien vers l'accueil">
+                <img src="images/logo_scale_100.png"
+                    srcset="images/logo_scale_50.png 50w, images/logo_scale_100.png 100w"
+                    sizes="(max-width: 576px) 80px, 150px" alt="Logo Promo">
             </a>
         </div>
 
         <h1>Promo EDWM2511FT</h1>
+
+        <input type="checkbox" id="menu-toggle" class="menu-toggle-checkbox">
+
+        <label for="menu-toggle" class="menu-toggle" aria-label="Ouvrir le menu">☰</label>
 
         <nav class="header-droite">
             <ul class="menu">
@@ -31,16 +36,15 @@
                 <li><a href="informations.html">Informations</a></li>
             </ul>
             <fieldset class="type-affichage">
-                <div>
-                    <span>Type d'affichage :</span>
-                </div>
-                <div>
+
+                <span>Type d'affichage :</span>
+
+                <div class="type-affichage-choix">
                     <label for="type-liste">Liste</label>
-                    <input type="radio" id="type-liste" name="affichage" value="liste" checked>
+                    <input type="radio" id="type-liste" name="affichage" value="Liste" checked>
 
                     <label for="type-cartes">Cartes</label>
-                    <input type="radio" id="type-cartes" name="affichage" value="cartes">
-
+                    <input type="radio" id="type-cartes" name="affichage" value="Cartes">
                 </div>
             </fieldset>
         </nav>
@@ -51,9 +55,11 @@
 
         <form class="parametres" id="preferencesForm">
             <div class="ligne-parametre">
-                <label class="label-parametre">Thème du site</label>
+                <label for="themeSelect" class="label-parametre">
+                    Thème du site
+                </label>
 
-                <select id="themeSelect">
+                <select id="themeSelect" name="theme">
                     <option value="clair">Clair</option>
                     <option value="sombre">Sombre</option>
                 </select>

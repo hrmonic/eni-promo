@@ -90,17 +90,15 @@ function gererPagePreferences() {
     selectTheme.value = localStorage.getItem(CLE_THEME);
 
     radiosAffichage.forEach(radio => {
-        radio.checked =
-            radio.value === localStorage.getItem(CLE_AFFICHAGE);
+        radio.checked = (radio.value === localStorage.getItem(CLE_AFFICHAGE));
     });
 
     formulaire.addEventListener("submit", event => {
         event.preventDefault();
 
         const themeChoisi = selectTheme.value;
-        const affichageChoisi = formulaire.querySelector(
-            'input[name="affichage"]:checked'
-        )?.value || "liste";
+        const affichageChoisi =
+            formulaire.querySelector('input[name="affichage"]:checked')?.value || "liste";
 
         localStorage.setItem(CLE_THEME, themeChoisi);
         localStorage.setItem(CLE_AFFICHAGE, affichageChoisi);
@@ -110,7 +108,36 @@ function gererPagePreferences() {
 }
 
 /* ============================================================
-   7) CHARGEMENT DES APPRENANTS – LISTE
+   7) MISE À JOUR DES ICÔNES (BLANC / NOIR)
+============================================================ */
+
+function updateIconsTheme() {
+    const isLightTheme = document.body.classList.contains("light-theme");
+
+    document.querySelectorAll("img.icon").forEach(img => {
+
+        if (img.src.includes("eye-solid-full")) {
+            img.src = isLightTheme
+                ? "images/eye-solid-full.svg"
+                : "images/eye-solid-full-white.svg";
+        }
+
+        if (img.src.includes("pen-square-solid")) {
+            img.src = isLightTheme
+                ? "images/pen-square-solid.svg"
+                : "images/pen-square-solid-white.svg";
+        }
+
+        if (img.src.includes("trash-solid")) {
+            img.src = isLightTheme
+                ? "images/trash-solid.svg"
+                : "images/trash-solid white.svg";
+        }
+    });
+}
+
+/* ============================================================
+   8) CHARGEMENT DES APPRENANTS – LISTE
 ============================================================ */
 
 function chargerListe() {
@@ -121,32 +148,37 @@ function chargerListe() {
         .then(res => res.json())
         .then(data => {
             tbody.innerHTML = "";
+
             data.apprenants.forEach(apprenant => {
                 const tr = document.createElement("tr");
+
                 tr.innerHTML = `
                     <td>${apprenant.nom}</td>
                     <td>${apprenant.prenom}</td>
                     <td>${apprenant.ville}</td>
                     <td class="actions">
                         <a href="#" class="voir" aria-label="Voir ${apprenant.prenom} ${apprenant.nom}">
-                            <i class="fa-solid fa-eye"></i>
+                            <img src="images/eye-solid-full-white.svg" alt="voir profil" class="icon">
                         </a>
                         <a href="#" class="modifier" aria-label="Modifier ${apprenant.prenom} ${apprenant.nom}">
-                            <i class="fa-solid fa-square-pen"></i>
+                            <img src="images/pen-square-solid-white.svg" alt="modifier profil" class="icon">
                         </a>
                         <a href="#" class="supprimer" aria-label="Supprimer ${apprenant.prenom} ${apprenant.nom}">
-                            <i class="fa-solid fa-trash"></i>
+                            <img src="images/trash-solid-white.svg" alt="supprimer profil" class="icon">
                         </a>
                     </td>
                 `;
+
                 tbody.appendChild(tr);
             });
+
+            updateIconsTheme(); // 🔹 synchronisation après création des icônes
         })
         .catch(err => console.error("Erreur JSON liste :", err));
 }
 
 /* ============================================================
-   8) CHARGEMENT DES APPRENANTS – CARTES
+   9) CHARGEMENT DES APPRENANTS – CARTES
 ============================================================ */
 
 function chargerCartes() {
@@ -157,6 +189,7 @@ function chargerCartes() {
         .then(res => res.json())
         .then(data => {
             container.innerHTML = "";
+
             data.apprenants.forEach(apprenant => {
                 const carte = document.createElement("a");
                 carte.href = "#";
@@ -179,7 +212,7 @@ function chargerCartes() {
 }
 
 /* ============================================================
-   9) INITIALISATION GLOBALE
+   10) INITIALISATION GLOBALE
 ============================================================ */
 
 document.addEventListener("DOMContentLoaded", () => {

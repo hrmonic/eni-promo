@@ -7,7 +7,6 @@
     <meta name="description" content="Informations générales avec les liens utiles.">
     <title>PromoENI - Informations</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/d276115f7d.js" crossorigin="anonymous"></script>
     <script src="script.js" defer></script>
 
 </head>
@@ -16,11 +15,17 @@
     <header>
         <div class="header-gauche">
             <a href="index.html">
-                <img src="images/logo.png" alt="Logo ENI, lien vers l'accueil">
+                <img src="images/logo_scale_100.png"
+                    srcset="images/logo_scale_50.png 50w, images/logo_scale_100.png 100w"
+                    sizes="(max-width: 576px) 80px, 150px" alt="Logo Promo">
             </a>
         </div>
 
         <h1>Promo EDWM2511FT</h1>
+
+        <input type="checkbox" id="menu-toggle" class="menu-toggle-checkbox">
+
+        <label for="menu-toggle" class="menu-toggle" aria-label="Ouvrir le menu">☰</label>
 
         <nav class="header-droite">
             <ul class="menu">
@@ -30,15 +35,15 @@
                 <li><a href="informations.html">Informations</a></li>
             </ul>
             <fieldset class="type-affichage">
-                <div>
-                    <span>Type d'affichage :</span>
-                </div>
-                <div>
+
+                <span>Type d'affichage :</span>
+
+                <div class="type-affichage-choix">
                     <label for="type-liste">Liste</label>
-                    <input type="radio" id="type-liste" name="affichage" value="liste" checked>
+                    <input type="radio" id="type-liste" name="affichage" value="Liste" checked>
 
                     <label for="type-cartes">Cartes</label>
-                    <input type="radio" id="type-cartes" name="affichage" value="cartes">
+                    <input type="radio" id="type-cartes" name="affichage" value="Cartes">
                 </div>
             </fieldset>
         </nav>
@@ -96,26 +101,36 @@
             <section class="container2">
                 <h3>Liens utiles</h3>
                 <h4>Les documentations</h4>
-                <a href="https://developer.mozilla.org/fr/docs/Web/CSS">CSS MDN documentation</a><br>
-                <a href="https://developer.mozilla.org/fr/docs/Web/HTML">HTML MDN documentation</a><br>
-                <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript">JAVASCRIPT MDN documentation</a><br>
-                <a href="https://developer.mozilla.org/fr/docs/Web/API">WEB API MDN documentation</a><br>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/fr/docs/Web/CSS">CSS MDN documentation</a></li><br>
+                    <li><a href="https://developer.mozilla.org/fr/docs/Web/HTML">HTML MDN documentation</a></li><br>
+                    <li><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript">JAVASCRIPT MDN documentation</a>
+                    </li><br>
+                    <li><a href="https://developer.mozilla.org/fr/docs/Web/API">WEB API MDN documentation</a></li>
+                </ul>
                 <h4>Convention de nommage :</h4>
-                <a href="https://github.com/stubbornella/oocss/wiki">OOCSS Wiki</a><br>
-                <a href="https://en.bem.info/methodology/">BEM</a><br>
-                <a href="https://www.alsacreations.com/article/lire/1641-bonnes-pratiques-en-css-bem-et-oocss.html">Alsa
-                    création BEM + OOCSS</a><br>
+                <ul>
+                    <li><a href="https://github.com/stubbornella/oocss/wiki">OOCSS Wiki</a></li><br>
+                    <li><a href="https://en.bem.info/methodology/">BEM</a></li><br>
+                    <li><a
+                            href="https://www.alsacreations.com/article/lire/1641-bonnes-pratiques-en-css-bem-et-oocss.html">Alsa
+                            création BEM + OOCSS</a></li>
+                </ul>
                 <h4>Entrainement</h4>
-                <a href="https://flukeout.github.io/">CSS Diner</a><br>
-                <a href="https://refactoring.guru/fr/design-patterns">Design Patterns</a><br>
-                <a href="https://cantunsee.space/">CantUNSEE UI Game</a><br>
-                <a href="https://github.com/stubbornella/oocss/wiki">OOCSS Wiki</a><br>
-                <a href="https://flexboxfroggy.com/#fr">Flexbox Froggy</a><br>
-                <a href="https://codepip.com/games/">CODPIP training code games</a><br>
-                <a href="https://leekwars.com/">LEEK Programming game</a><br>
-                <a href="https://userinyerface.com/game.html">UI Training</a><br>
+                <ul>
+                    <li><a href="https://flukeout.github.io/">CSS Diner</a></li><br>
+                    <li><a href="https://refactoring.guru/fr/design-patterns">Design Patterns</a></li><br>
+                    <li><a href="https://cantunsee.space/">CantUNSEE UI Game</a></li><br>
+                    <li><a href="https://github.com/stubbornella/oocss/wiki">OOCSS Wiki</a></li><br>
+                    <li><a href="https://flexboxfroggy.com/#fr">Flexbox Froggy</a></li><br>
+                    <li><a href="https://codepip.com/games/">CODPIP training code games</a></li><br>
+                    <li><a href="https://leekwars.com/">LEEK Programming game</a></li><br>
+                    <li><a href="https://userinyerface.com/game.html">UI Training</a></li>
+                </ul>
                 <h4>Tools</h4>
-                <a href="https://fonts.google.com/">Google Fonts</a><br>
+                <ul>
+                    <li><a href="https://fonts.google.com/">Google Fonts</a></li>
+                </ul>
             </section>
         </div>
 

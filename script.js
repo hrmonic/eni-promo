@@ -121,18 +121,6 @@ function updateIconsTheme() {
                 ? "images/eye-solid-full.svg"
                 : "images/eye-solid-full-white.svg";
         }
-
-        if (img.src.includes("pen-square-solid")) {
-            img.src = isLightTheme
-                ? "images/pen-square-solid.svg"
-                : "images/pen-square-solid-white.svg";
-        }
-
-        if (img.src.includes("trash-solid")) {
-            img.src = isLightTheme
-                ? "images/trash-solid.svg"
-                : "images/trash-solid white.svg";
-        }
     });
 }
 
@@ -144,7 +132,7 @@ function chargerListe() {
     const tbody = document.getElementById("liste-apprenants");
     if (!tbody) return;
 
-    fetch("promo.json")
+    fetch("../data/promo.json")
         .then(res => res.json())
         .then(data => {
             tbody.innerHTML = "";
@@ -156,15 +144,9 @@ function chargerListe() {
                     <td>${apprenant.nom}</td>
                     <td>${apprenant.prenom}</td>
                     <td>${apprenant.ville}</td>
-                    <td class="actions">
+                    <td class="action">
                         <a href="#" class="voir" aria-label="Voir ${apprenant.prenom} ${apprenant.nom}">
-                            <img src="images/eye-solid-full-white.svg" alt="voir profil" class="icon">
-                        </a>
-                        <a href="#" class="modifier" aria-label="Modifier ${apprenant.prenom} ${apprenant.nom}">
-                            <img src="images/pen-square-solid-white.svg" alt="modifier profil" class="icon">
-                        </a>
-                        <a href="#" class="supprimer" aria-label="Supprimer ${apprenant.prenom} ${apprenant.nom}">
-                            <img src="images/trash-solid-white.svg" alt="supprimer profil" class="icon">
+                            <img src="../images/eye-solid-full-white.svg" alt="voir profil" class="icon">
                         </a>
                     </td>
                 `;
@@ -185,7 +167,7 @@ function chargerCartes() {
     const container = document.getElementById("cartes-apprenants");
     if (!container) return;
 
-    fetch("promo.json")
+    fetch("../data/promo.json")
         .then(res => res.json())
         .then(data => {
             container.innerHTML = "";
@@ -212,9 +194,23 @@ function chargerCartes() {
 }
 
 /* ============================================================
-   10) CHARGEMENT DE LA CARTE
+   10) CHARGEMENT DES APPRENANTS – CARTES
+============================================================ 
+
+En cours de développement : itération 3 */
+
+
+/* ============================================================
+   11) CHARGEMENT DE LA CARTE
 ============================================================ */
 document.addEventListener("DOMContentLoaded", () => {
+
+    /* ============================================================
+       SÉCURITÉ : vérifier que la page contient une carte
+       et que la librairie Leaflet est bien chargée
+    ============================================================ */
+    const mapContainer = document.getElementById("map");
+    if (!mapContainer || typeof L === "undefined") return;
 
     // Affichage carte France
     const map = L.map("map", {
@@ -247,7 +243,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 /* ============================================================
-   11) INITIALISATION GLOBALE
+   12) INITIALISATION GLOBALE
 ============================================================ */
 
 document.addEventListener("DOMContentLoaded", () => {

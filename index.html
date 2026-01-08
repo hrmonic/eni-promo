@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Liste des apprenants de la promotion ENI EDWM2511FT.">
     <title>PromoENI - Accueil</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../script.js" defer></script>
 
 </head>
 
@@ -15,8 +15,8 @@
     <header>
         <div class="header-gauche">
             <a href="index.html">
-                <img src="images/logo_scale_100.png"
-                    srcset="images/logo_scale_50.png 50w, images/logo_scale_100.png 100w"
+                <img src="../images/logo_scale_100.png"
+                    srcset="../images/logo_scale_50.png 50w, ../images/logo_scale_100.png 100w"
                     sizes="(max-width: 576px) 80px, 150px" alt="Logo Promo">
             </a>
         </div>
@@ -29,10 +29,10 @@
 
         <nav class="header-droite">
             <ul class="menu">
-                <li><a href="index.html">Accueil </a></li>
-                <li><a href="preferences.html">Préférences</a></li>
-                <li><a href="carte.html">Carte</a></li>
-                <li><a href="informations.html">Informations</a></li>
+                <li><a href="/index.html">Accueil </a></li>
+                <li><a href="/pages/preferences.html">Préférences</a></li>
+                <li><a href="/pages/carte.html">Carte</a></li>
+                <li><a href="/pages/informations.html">Informations</a></li>
             </ul>
             <fieldset class="type-affichage">
 
@@ -60,7 +60,7 @@
                             <th>Nom</th>
                             <th>Prénom</th>
                             <th>Ville</th>
-                            <th>Actions</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
 
@@ -72,6 +72,11 @@
 
             <div class="cartes-apprenants" id="cartes-apprenants">
                 <!-- Les cartes des apprenants seront insérées ici dynamiquement via JavaScript -->
+            </div>
+            <div class="modale-info-apprenant" id="modale-info-apprenant">
+ <!--Test avec le html pour la mise en forme du modale -->
+
+                <!--Gérer avec le JS-->
             </div>
         </section>
 

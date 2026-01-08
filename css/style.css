@@ -18,6 +18,9 @@
     --menu-hover-text: white;
     --menu-hover-shadow: rgba(255, 255, 255, 0.65);
 
+    --type-affichage-text-shadow:
+        1px 1px 3px rgba(0, 0, 0, 0.6);
+
     --button-bg: #ffffff;
     --button-text: rgb(11, 50, 84);
     --button-border: rgb(11, 50, 84);
@@ -58,6 +61,7 @@ body.light-theme {
     --menu-hover-text: rgb(11, 50, 84);
     --menu-hover-shadow: rgba(0, 0, 0, 0.2);
 
+    --type-affichage-text-shadow: none;
     --button-text: black;
     --button-border-hover-color: black;
     --footer-text: black;
@@ -101,26 +105,41 @@ header {
     position: sticky;
     top: 0;
     z-index: 10;
+
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem;
+    align-items: stretch;
+    padding: 0.75rem 1rem;
     background: var(--header-bg);
     border-radius: 0.5rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
     margin-bottom: 1rem;
 }
 
-.header-gauche,
-.header-droite {
+
+.header-gauche {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1
+}
+
+.header-gauche h1 {
+    margin: 0;
+    line-height: 1;
 }
 
 .header-droite {
+    display: flex;
     flex-direction: column;
+    align-items: flex-end;  
+    justify-content: space-between; 
+    height: 100%;
 }
+
+body.light-theme .type-affichage input[type="radio"] {
+    accent-color: rgb(11, 50, 84);
+}
+
 
 h1 {
     font-family: 'Segoe UI', Tahoma, sans-serif;
@@ -196,14 +215,30 @@ h2 {
    TYPE D’AFFICHAGE (HEADER)
 ============================================================ */
 .type-affichage {
+    margin-top: 1.2rem;
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    font-size: 1.2rem;
+
+    font-size: 1.1rem;
+    color: var(--text-color);
+
+    background: none;
     border: none;
     padding: 0;
-    margin: 0;
+    text-shadow: var(--type-affichage-text-shadow);
+}
 
+.type-affichage label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.type-affichage input[type="radio"] {
+    accent-color: var(--menu-hover-bg);
 }
 
 body.preferences .type-affichage,
@@ -243,7 +278,7 @@ body.page-carte .type-affichage {
     border-bottom: 1px solid #ccc;
 }
 
-.actions img {
+.action img {
     width: 20px;
     height: 20px;
     display: block;
@@ -281,15 +316,21 @@ body.page-carte .type-affichage {
 }
 
 /* ============================================================
-   ACTIONS (ICÔNES)
+   MODALE : Détail des apprenants
 ============================================================ */
-.actions {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
+.modale-info-apprenant {
+    display: none;
 }
 
-.actions a {
+/* ============================================================
+   ACTIONS (ICÔNES)
+============================================================ */
+.action {
+    display: flex;
+    justify-content: center;
+}
+
+.action a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -300,7 +341,7 @@ body.page-carte .type-affichage {
     transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
 }
 
-.actions a:hover {
+.action a:hover {
     transform: scale(1.15) translateY(-2px);
     background-color: var(--menu-hover-bg);
     color: var(--menu-hover-text);
@@ -425,7 +466,7 @@ h5 {
     color: var(--button-text);
     background-color: var(--button-bg);
     border: 2px solid var(--button-border);
-    border-color: var(--button-border-hover-color);
+
     border-radius: 10px;
     box-shadow: 0 2px 3px rgba(16, 0, 0, 0.77);
 
@@ -438,6 +479,7 @@ h5 {
     background-color: var(--button-hover-bg);
     transform: translateY(-5px);
     box-shadow: 3px 3px 3px rgba(255, 255, 255, 0.65);
+    border-color: var(--button-border-hover-color);
 }
 
 .boutons-parametres {
@@ -555,24 +597,11 @@ body.page-carte #map {
         vertical-align: middle;
     }
 
-    .tableau td.actions {
+    .tableau td.action {
         display: flex;
         justify-content: center;
         align-items: center;
         padding: 0.5rem;
-    }
-
-    .tableau td.actions .voir {
-        text-decoration: none;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 1rem;
-    }
-
-    .tableau td.actions .modifier,
-    .tableau td.actions .supprimer {
-        display: none;
     }
 
     .cartes-apprenants {
@@ -661,15 +690,6 @@ body.page-carte #map {
         padding: 1rem;
     }
 
-    .tableau td.actions .voir {
-        font-size: 1.2rem;
-    }
-
-    .tableau td.actions .modifier,
-    .tableau td.actions .supprimer {
-        display: inline-flex;
-    }
-
     body.page-carte #map {
         width: 90%;
     }
@@ -701,8 +721,16 @@ body.page-carte #map {
     }
 }
 
+/*Sécurité : transition menu en bas car manque de place */
+@media (max-width: 940px) {
+    header {
+        flex-direction: column;
+    }
+}
+
 /* DESKTOP (≥ 992px) */
 @media (min-width: 992px) {
+
 
     .cartes-apprenants {
         grid-template-columns: repeat(4, 1fr);

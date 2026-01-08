@@ -212,7 +212,40 @@ function chargerCartes() {
 }
 
 /* ============================================================
-   10) INITIALISATION GLOBALE
+   10) CHARGEMENT DE LA CARTE
+============================================================ */
+document.addEventListener("DOMContentLoaded", () => {
+
+    // Affichage carte France
+    const map = L.map("map").setView([46.603354, 1.8883335], 6);
+
+    // Fond de carte OpenStreetMap (récupéré via le tuto)
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "&copy; OpenStreetMap contributors"
+    }).addTo(map);
+
+    // Mettre les coordonnées
+    function coordonnee() {
+
+        fetch("promo.json")
+            .then(res => res.json())
+            .then(data => {
+                data.apprenants.forEach(apprenant => {
+                    const latitude = apprenant.coordonnees.latitude;
+                    const longitude = apprenant.coordonnees.longitude;
+                    const marker = L.marker([latitude, longitude]).addTo(map);
+                    
+                    marker.bindPopup(`${apprenant.prenom} ${apprenant.nom}`)
+                  
+                });
+            })
+            .catch(err => console.error("Erreur Chargement du JSON", err));
+    } coordonnee();
+});
+
+
+/* ============================================================
+   11) INITIALISATION GLOBALE
 ============================================================ */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -222,4 +255,5 @@ document.addEventListener("DOMContentLoaded", () => {
     gererPagePreferences();
     chargerListe();
     chargerCartes();
+
 });

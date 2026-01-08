@@ -6,7 +6,11 @@
       "prenom": "Ahmet",
       "ville": "Lyon",
       "avatar": "avatar.png",
-      "anecdotes": "Toujours partant pour aider sur les bugs JavaScript."
+      "anecdotes": "Toujours partant pour aider sur les bugs JavaScript.",
+      "coordonnees": {
+        "latitude": 45.764043,
+        "longitude": 4.835659
+      }
     },
     {
       "id": 2,
@@ -14,7 +18,11 @@
       "prenom": "Severine",
       "ville": "Rennes",
       "avatar": "avatar.png",
-      "anecdotes": "Grande adepte des checklists avant de coder."
+      "anecdotes": "Grande adepte des checklists avant de coder.",
+      "coordonnees": {
+        "latitude": 48.117266,
+        "longitude": -1.677793
+      }
     },
     {
       "id": 3,
@@ -22,7 +30,11 @@
       "prenom": "Ellies",
       "ville": "Grenoble",
       "avatar": "avatar.png",
-      "anecdotes": "Aime optimiser le CSS jusque dans les détails."
+      "anecdotes": "Aime optimiser le CSS jusque dans les détails.",
+      "coordonnees": {
+        "latitude": 45.188529,
+        "longitude": 5.724524
+      }
     },
     {
       "id": 4,
@@ -30,7 +42,11 @@
       "prenom": "Frederic",
       "ville": "Brest",
       "avatar": "avatar.png",
-      "anecdotes": "Toujours curieux des nouvelles technos web."
+      "anecdotes": "Toujours curieux des nouvelles technos web.",
+      "coordonnees": {
+        "latitude": 48.390394,
+        "longitude": -4.486076
+      }
     },
     {
       "id": 5,
@@ -38,7 +54,11 @@
       "prenom": "Marie",
       "ville": "Angers",
       "avatar": "avatar.png",
-      "anecdotes": "Très organisée, fan de Trello et Notion."
+      "anecdotes": "Très organisée, fan de Trello et Notion.",
+      "coordonnees": {
+        "latitude": 47.478419,
+        "longitude": -0.563166
+      }
     },
     {
       "id": 6,
@@ -46,7 +66,11 @@
       "prenom": "Jason",
       "ville": "Tours",
       "avatar": "avatar.png",
-      "anecdotes": "Apprécie particulièrement le travail en équipe."
+      "anecdotes": "Apprécie particulièrement le travail en équipe.",
+      "coordonnees": {
+        "latitude": 47.394144,
+        "longitude": 0.684840
+      }
     },
     {
       "id": 7,
@@ -54,7 +78,11 @@
       "prenom": "Pierre-Yves",
       "ville": "Nantes",
       "avatar": "avatar.png",
-      "anecdotes": "Toujours une blague pour détendre l'ambiance."
+      "anecdotes": "Toujours une blague pour détendre l'ambiance.",
+      "coordonnees": {
+        "latitude": 47.218371,
+        "longitude": -1.553621
+      }
     },
     {
       "id": 8,
@@ -62,7 +90,11 @@
       "prenom": "Clement",
       "ville": "Annecy",
       "avatar": "avatar.png",
-      "anecdotes": "Très à l'aise avec Flexbox et Grid."
+      "anecdotes": "Très à l'aise avec Flexbox et Grid.",
+      "coordonnees": {
+        "latitude": 45.899247,
+        "longitude": 6.129384
+      }
     },
     {
       "id": 9,
@@ -70,7 +102,11 @@
       "prenom": "Swan",
       "ville": "Montpellier",
       "avatar": "avatar.png",
-      "anecdotes": "Passionné par l'UX et l'accessibilité."
+      "anecdotes": "Passionné par l'UX et l'accessibilité.",
+      "coordonnees": {
+        "latitude": 43.610769,
+        "longitude": 3.876716
+      }
     },
     {
       "id": 10,
@@ -78,7 +114,11 @@
       "prenom": "Nicolas",
       "ville": "Pau",
       "avatar": "avatar.png",
-      "anecdotes": "Toujours prêt à tester les fonctionnalités en premier."
+      "anecdotes": "Toujours prêt à tester les fonctionnalités en premier.",
+      "coordonnees": {
+        "latitude": 43.295100,
+        "longitude": -0.370797
+      }
     },
     {
       "id": 11,
@@ -86,7 +126,11 @@
       "prenom": "Sebastien",
       "ville": "Clermont-Ferrand",
       "avatar": "avatar.png",
-      "anecdotes": "Aime comprendre le fonctionnement interne des frameworks."
+      "anecdotes": "Aime comprendre le fonctionnement interne des frameworks.",
+      "coordonnees": {
+        "latitude": 45.777222,
+        "longitude": 3.087025
+      }
     },
     {
       "id": 12,
@@ -94,7 +138,11 @@
       "prenom": "William",
       "ville": "Arras",
       "avatar": "avatar.png",
-      "anecdotes": "Très méthodique dans son code."
+      "anecdotes": "Très méthodique dans son code.",
+      "coordonnees": {
+        "latitude": 50.291002,
+        "longitude": 2.777535
+      }
     },
     {
       "id": 13,
@@ -102,7 +150,11 @@
       "prenom": "Reda",
       "ville": "Lyon",
       "avatar": "avatar.png",
-      "anecdotes": "Toujours attentif à la structure et à la propreté du projet."
+      "anecdotes": "Toujours attentif à la structure et à la propreté du projet.",
+      "coordonnees": {
+        "latitude": 45.764043,
+        "longitude": 4.835659
+      }
     },
     {
       "id": 14,
@@ -110,7 +162,11 @@
       "prenom": "Hugo",
       "ville": "Bayonne",
       "avatar": "avatar.png",
-      "anecdotes": "Aime expérimenter différentes approches de code."
+      "anecdotes": "Aime expérimenter différentes approches de code.",
+      "coordonnees": {
+        "latitude": 43.492949,
+        "longitude": -1.474841
+      }
     },
     {
       "id": 15,
@@ -118,7 +174,11 @@
       "prenom": "Marie-Claire",
       "ville": "Strasbourg",
       "avatar": "avatar.png",
-      "anecdotes": "Très rigoureuse sur les bonnes pratiques."
+      "anecdotes": "Très rigoureuse sur les bonnes pratiques.",
+      "coordonnees": {
+        "latitude": 48.573405,
+        "longitude": 7.752111
+      }
     }
   ]
 }

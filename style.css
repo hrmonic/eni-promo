@@ -39,6 +39,9 @@
     --cartes-text: white;
     --cartes-hover-text: white;
     --cartes-shadow: rgba(0, 0, 0, 0.6);
+
+    --link-background-hover: rgb(71, 71, 71);
+    --link-text-hover: white;
 }
 
 /* ============================================================
@@ -69,6 +72,9 @@ body.light-theme {
     --cartes-hover-bg: rgba(240, 240, 240, 1);
 
     --h1-text-shadow: none;
+
+    --link-background-hover: rgb(71, 71, 71);
+    --link-text-hover: white;
 }
 
 /* ============================================================
@@ -128,13 +134,13 @@ h2 {
 
 .logo {
     display: inline-block;
-    width: 150px;         
+    width: 150px;
 }
 
 .logo img {
     width: 100%;
     height: auto;
-    aspect-ratio: 1 / 1;  
+    aspect-ratio: 1 / 1;
     object-fit: contain;
     display: block;
 }
@@ -173,12 +179,10 @@ h2 {
     box-shadow: 3px 3px 3px var(--menu-hover-shadow);
 }
 
-/* Checkbox cachée (état du menu) */
 .menu-toggle-checkbox {
     display: none;
 }
 
-/* Bouton hamburger */
 .menu-toggle {
     display: none;
     font-size: 1.8rem;
@@ -331,15 +335,6 @@ body.light-theme .container2 {
     border-color: rgba(11, 50, 84, 0.2);
 }
 
-.container2 a {
-    color: aqua;
-    text-decoration: none;
-}
-
-body.light-theme .container2 a {
-    color: rgb(11, 50, 84);
-}
-
 body.informations .bouton {
     margin: 2rem auto 0;
     display: flex;
@@ -347,11 +342,23 @@ body.informations .bouton {
 }
 
 .container1 li {
-margin-left: 2rem;
-line-height: 1.6;
+    margin-left: 2rem;
+    line-height: 1.6;
 }
+
 .container2 li {
-margin-left: 2rem;
+    margin-left: 2rem;
+}
+
+.mesblocs a {
+    color: var(--text-color);
+}
+
+.mesblocs a:hover {
+    background-color: var(--link-background-hover);
+    color: var(--link-text-hover);
+    padding: 0.4rem;
+    border-radius: 15px;
 }
 
 h3 {
@@ -457,6 +464,17 @@ span.bouton {
     box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.6);
     transform: translateY(-2px);
 
+}
+
+/* ============================================================
+   PAGE – CARTE Leaflet JS extension
+============================================================ */
+
+body.page-carte #map {
+    width: 100%;
+    height: 60vh;
+    border-radius: 0.5rem;
+    margin: 1rem auto;
 }
 
 /* ============================================================
@@ -593,6 +611,9 @@ span.bouton {
         width: 100%;
     }
 
+    body.page-carte #map {
+        width: 100%;
+    }
 }
 
 /* TABLETTE (≥ 576px) */
@@ -649,27 +670,34 @@ span.bouton {
         display: inline-flex;
     }
 
-}
-
-/* TABLETTE LARGE (≥ 768px) */
-@media (min-width: 768px) {
-
-    header {
-        flex-direction: row;
-        justify-content: space-between;
+    body.page-carte #map {
+        width: 90%;
     }
 
-    .header-droite {
-        flex-direction: column;
-        align-items: center;
-    }
+    /* TABLETTE LARGE (≥ 768px) */
+    @media (min-width: 768px) {
 
-    .cartes-apprenants {
-        grid-template-columns: repeat(3, 1fr);
-    }
+        header {
+            flex-direction: row;
+            justify-content: space-between;
+        }
 
-    .carte {
-        max-width: 350px;
+        .header-droite {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .cartes-apprenants {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .carte {
+            max-width: 350px;
+        }
+
+        body.page-carte #map {
+            width: 70%;
+        }
     }
 }
 
@@ -683,6 +711,10 @@ span.bouton {
     .carte {
         max-width: 400px;
     }
+
+    body.page-carte #map {
+        width: 70%;
+    }
 }
 
 /* LARGE DESKTOP (≥ 1200px) */
@@ -690,5 +722,9 @@ span.bouton {
 
     .cartes-apprenants {
         grid-template-columns: repeat(6, 1fr);
+    }
+
+    body.page-carte #map {
+        width: 70%;
     }
 }

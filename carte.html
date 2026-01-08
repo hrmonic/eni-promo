@@ -4,14 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Liste des apprenants de la promotion ENI EDWM2511FT.">
-    <title>PromoENI - Accueil</title>
+    <meta name="description" content="Carte avec les coordonnées géographiques de chaque apprenant">
+    <title>PromoENI - Carte</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <script src="script.js" defer></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
 </head>
 
-<body class="accueil">
+<body class="page-carte">
     <header>
         <div class="header-gauche">
             <a href="index.html">
@@ -48,38 +52,11 @@
             </fieldset>
         </nav>
     </header>
-
     <main>
-
-        <h2>Liste des apprenants</h2>
-        <section class="apprenants"> <!--création de la class pour regrouper les deux affichages pour le JS-->
-            <div class="tableau-scroll">
-                <table class="tableau">
-                    <thead>
-                        <tr>
-                            <th>Nom</th>
-                            <th>Prénom</th>
-                            <th>Ville</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-
-                    <tbody id="liste-apprenants">
-                        <!-- Les apprenants seront insérés ici dynamiquement via JavaScript -->
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="cartes-apprenants" id="cartes-apprenants">
-                <!-- Les cartes des apprenants seront insérées ici dynamiquement via JavaScript -->
-            </div>
-        </section>
+        <h2>Carte</h2>
+        <div id="map"></div>
 
     </main>
-
     <footer>
     </footer>
-
 </body>
-
-</html>

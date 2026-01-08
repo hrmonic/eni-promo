@@ -22,9 +22,8 @@
     --button-text: rgb(11, 50, 84);
     --button-border: rgb(11, 50, 84);
     --button-hover-bg: rgb(11, 50, 84);
-    --button-hover-color: white;
     --button-hover-text: white;
-
+    --button-border-hover-color: white;
     --footer-bg: linear-gradient(to left, #769ab97d, #ffffff);
     --footer-text: rgb(11, 50, 84);
 
@@ -60,6 +59,7 @@ body.light-theme {
     --menu-hover-shadow: rgba(0, 0, 0, 0.2);
 
     --button-text: black;
+    --button-border-hover-color: black;
     --footer-text: black;
     --select-text: black;
 
@@ -167,7 +167,7 @@ h2 {
     color: var(--menu-text);
     background-color: var(--menu-bg);
     border: 2px solid var(--menu-border);
-    border-radius: 10PX;
+    border-radius: 10px;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.7);
     transition: all 0.2s ease;
 }
@@ -207,7 +207,8 @@ h2 {
 }
 
 body.preferences .type-affichage,
-body.informations .type-affichage {
+body.informations .type-affichage,
+body.page-carte .type-affichage {
     visibility: hidden;
 }
 
@@ -270,7 +271,6 @@ body.informations .type-affichage {
     box-shadow: 0 2px 6px var(--cartes-shadow);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     text-align: center;
-    gap: 1rem;
 }
 
 .carte:hover {
@@ -318,7 +318,7 @@ body.informations .type-affichage {
     display: flex;
     gap: 2rem;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: stretch;
     flex-wrap: wrap;
 }
 

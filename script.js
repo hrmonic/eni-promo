@@ -217,7 +217,9 @@ function chargerCartes() {
 document.addEventListener("DOMContentLoaded", () => {
 
     // Affichage carte France
-    const map = L.map("map").setView([46.603354, 1.8883335], 6);
+    const map = L.map("map", {
+        zoomSnap: 0.25
+    }).setView([47, 1.8883335], 5.6);
 
     // Fond de carte OpenStreetMap (récupéré via le tuto)
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -234,9 +236,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     const latitude = apprenant.coordonnees.latitude;
                     const longitude = apprenant.coordonnees.longitude;
                     const marker = L.marker([latitude, longitude]).addTo(map);
-                    
+
                     marker.bindPopup(`${apprenant.prenom} ${apprenant.nom}`)
-                  
+
                 });
             })
             .catch(err => console.error("Erreur Chargement du JSON", err));
@@ -255,5 +257,4 @@ document.addEventListener("DOMContentLoaded", () => {
     gererPagePreferences();
     chargerListe();
     chargerCartes();
-
 });

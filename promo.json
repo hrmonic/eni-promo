@@ -4,12 +4,12 @@
       "id": 1,
       "nom": "AKSU",
       "prenom": "Ahmet",
-      "ville": "Lyon",
+      "ville": "Paris",
       "avatar": "avatar.png",
       "anecdotes": "Toujours partant pour aider sur les bugs JavaScript.",
       "coordonnees": {
-        "latitude": 45.764043,
-        "longitude": 4.835659
+        "latitude": 48.866667,
+        "longitude": 2.333333
       }
     },
     {

@@ -148,16 +148,28 @@ function chargerListe() {
                         <a href="#" class="voir" aria-label="Voir ${apprenant.prenom} ${apprenant.nom}">
                             <img src="../images/eye-solid-full-white.svg" alt="voir profil" class="icon">
                         </a>
+                        <div class="modale-info-apprenant"></div>
                     </td>
                 `;
 
+                const boutonVoir = tr.querySelector(".voir");
+                const modale = tr.querySelector(".modale-info-apprenant")
+
+                boutonVoir.addEventListener("click", () => {
+                    afficherModaleApprenant(apprenant, modale);
+                });
+
+                boutonVoir.addEventListener("mouseleave", () => {
+                    cacherModaleApprenant(modale);
+                });
+
                 tbody.appendChild(tr);
             });
-
-            updateIconsTheme(); // 🔹 synchronisation après création des icônes
+            updateIconsTheme();
         })
         .catch(err => console.error("Erreur JSON liste :", err));
 }
+
 
 /* ============================================================
    9) CHARGEMENT DES APPRENANTS – CARTES
@@ -185,7 +197,21 @@ function chargerCartes() {
                     <h3>${apprenant.prenom} ${apprenant.nom}</h3>
                     <p>Ville : ${apprenant.ville}</p>
                     <span class="bouton">Détails</span>
+                    <div class="modale-info-apprenant"></div>
                 `;
+
+                const boutonDetails = carte.querySelector(".bouton");
+                const modale = carte.querySelector(".modale-info-apprenant");
+
+                boutonDetails.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    afficherModaleApprenant(apprenant, modale);
+                });
+
+                carte.addEventListener("mouseleave", () => {
+                    cacherModaleApprenant(modale);
+                });
 
                 container.appendChild(carte);
             });
@@ -195,9 +221,42 @@ function chargerCartes() {
 
 /* ============================================================
    10) CHARGEMENT DES APPRENANTS – CARTES
-============================================================ 
+============================================================*/
 
-En cours de développement : itération 3 */
+function afficherModaleApprenant(apprenant, modale) {
+    if (!modale) return;
+
+    modale.innerHTML = `
+        <div class="fiche-header">
+            <img src="../images/${apprenant.avatar}" alt="Avatar de ${apprenant.prenom}">
+            <div class="infos-principales">
+                <div class="ligne-info">
+                    <span class="label">Nom</span>
+                    <span class="valeur">${apprenant.nom}</span>
+                </div>
+                <div class="ligne-info">
+                    <span class="label">Prénom</span>
+                    <span class="valeur">${apprenant.prenom}</span>
+                </div>
+                <div class="ligne-info">
+                    <span class="label">Ville</span>
+                    <span class="valeur">${apprenant.ville}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="zone-texte">
+            ${apprenant.anecdotes || "Aucune information disponible."}
+        </div>
+    `;
+
+    modale.classList.add("visible");
+}
+
+function cacherModaleApprenant(modale) {
+    if (!modale) return;
+    modale.classList.remove("visible");
+}
 
 
 /* ============================================================
@@ -225,7 +284,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Mettre les coordonnées
     function coordonnee() {
 
-        fetch("promo.json")
+        fetch("../data/promo.json")
             .then(res => res.json())
             .then(data => {
                 data.apprenants.forEach(apprenant => {
@@ -233,8 +292,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     const longitude = apprenant.coordonnees.longitude;
                     const marker = L.marker([latitude, longitude]).addTo(map);
 
-                    marker.bindPopup(`${apprenant.prenom} ${apprenant.nom}`)
-
+                    marker.bindPopup(`
+                        <div style="text-align: center;">
+                            <strong>${apprenant.prenom} ${apprenant.nom}</strong><br>
+                            ${apprenant.ville}
+                        </div>
+                    `);
                 });
             })
             .catch(err => console.error("Erreur Chargement du JSON", err));

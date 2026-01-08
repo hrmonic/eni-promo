@@ -1,101 +1,136 @@
 # 📍 Promo ENI – Gestion des apprenants & carte interactive
 
-Projet web réalisé dans le cadre de la formation **Développeur Web & Web Mobile (ENI)**.
-Cette application permet d’afficher les apprenants d’une promotion sous forme de **liste**, de **cartes**, et de les localiser sur une **carte interactive Leaflet**, à partir de données JSON.
+Projet web **front-end** réalisé dans le cadre de la formation **Développeur Web & Web Mobile – ENI**.
+
+Cette application permet de visualiser les apprenants d’une promotion :
+- sous forme de **liste dynamique**
+- sous forme de **cartes**
+- et via une **carte interactive Leaflet**
+
+Toutes les données sont chargées dynamiquement depuis un fichier **JSON**, sans back-end.
 
 ---
 
-## 🎯 Objectifs du projet
+## 🎯 Objectifs pédagogiques
 
-- Manipuler des données **JSON** côté client
-- Générer dynamiquement du contenu HTML en **JavaScript**
-- Implémenter une **carte interactive** avec Leaflet
-- Gérer les préférences utilisateur (thème, affichage) via **localStorage**
-- Structurer un projet front-end clair, lisible et maintenable
-
----
-
-## 🚀 Fonctionnalités
-
-- ✅ Affichage des apprenants :
-  - en **liste** (tableau)
-  - en **cartes**
-- ✅ Carte interactive (Leaflet + OpenStreetMap) :
-  - marqueurs générés depuis les coordonnées du JSON
-  - popup avec nom et prénom au clic
-- ✅ Thème **clair / sombre** persistant
-- ✅ Choix du mode d’affichage (liste ou cartes)
-- ✅ Navigation multi-pages :
-  - Accueil
-  - Carte
-  - Préférences
-  - Informations
+- Exploitation de données **JSON** en JavaScript
+- Manipulation avancée du **DOM**
+- Gestion de l’état utilisateur avec **localStorage**
+- Implémentation d’une **carte interactive (Leaflet.js)**
+- Mise en place d’une **interface responsive** (mobile-first)
+- Respect des bonnes pratiques d’**accessibilité**
 
 ---
 
-## 🗂️ Structure du projet
+## 🗂️ Arborescence du projet
 
 ```
-├── index.html            # Page d’accueil (liste / cartes)
-├── carte.html            # Carte Leaflet
-├── preferences.html      # Préférences utilisateur
-├── informations.html     # Informations générales
+ENI-PROMO/
 │
-├── promo.json            # Données des apprenants
-├── script.js             # Logique JavaScript (DOM, Leaflet, localStorage)
-├── style.css             # Styles CSS (thèmes, responsive)
+├── css/
+│   └── style.css          # Styles globaux + responsive + thèmes
 │
-├── images/               # Logos et icônes
-└── README.md
+├── data/
+│   └── promo.json         # Données des apprenants
+│
+├── images/
+│   └── *.png / *.svg      # Logos, avatars, icônes
+│
+├── pages/
+│   ├── carte.html         # Carte Leaflet
+│   ├── informations.html # Page d’informations
+│   ├── preferences.html  # Page préférences utilisateur
+│
+├── index.html             # Page principale (liste / cartes)
+├── script.js              # Logique JavaScript globale
+├── README.md
+└── .gitignore
 ```
 
 ---
 
-## 🧠 Données utilisées
+## ⚙️ Fonctionnalités principales
 
-Les données proviennent d’un fichier `promo.json` contenant pour chaque apprenant :
+### 🔄 Affichage Liste / Cartes
+- Sélecteur radio dans le header
+- Choix sauvegardé dans **localStorage**
+- Synchronisation automatique entre pages
 
-- nom / prénom
-- ville
-- anecdotes
-- coordonnées géographiques (latitude / longitude)
+### 🌗 Thème Clair / Sombre
+- Sélection via la page **Préférences**
+- Thème persistant grâce à **localStorage**
+- Variables CSS pour un thème propre et maintenable
 
-Ces coordonnées sont utilisées pour positionner les marqueurs sur la carte.
+### 👁️ Modale apprenant (vue détail)
+- Ouverture par **clic** sur l’icône « œil »
+- Modale générée **100 % en JavaScript**
+- Positionnement intelligent (relative à la ligne)
+- Contenu structuré :
+  - Avatar
+  - Nom / Prénom / Ville (alignement type maquette)
+  - Zone texte libre (anecdotes)
 
----
-
-## 🛠️ Technologies utilisées
-
-- **HTML5**
-- **CSS3** (responsive, thèmes)
-- **JavaScript (ES6+)**
-- **Leaflet.js** (OpenStreetMap)
-- **LocalStorage**
-- **Git / GitHub**
-
----
-
-## ▶️ Lancer le projet
-
-1. Cloner le dépôt :
-```bash
-git clone https://github.com/votre-compte/nom-du-repo.git
-```
-
-2. Ouvrir le projet dans un navigateur :
-- soit via un serveur local (Live Server recommandé)
-- soit en ouvrant directement `index.html`
+### 🗺️ Carte interactive (Leaflet)
+- Carte centrée sur la France
+- Marqueurs positionnés via coordonnées GPS
+- Popup centrée contenant :
+  - Nom et prénom
+  - Ville affichée sur une ligne distincte
+- Comportement mobile natif (auto-pan Leaflet)
 
 ---
 
-## 📌 Remarques
+## ♿ Accessibilité
 
-- Projet **100 % front-end**, sans framework
-- Code volontairement structuré et commenté à des fins pédagogiques
-- Compatible desktop / tablette / mobile
+- Préférence du **clic** plutôt que du hover
+- Attributs `aria-label` sur les éléments interactifs
+- Navigation clavier fonctionnelle
+- Contrastes adaptés selon le thème
 
 ---
 
-## 👤 Auteur
+## 📱 Responsive design
 
-Projet réalisé par **Réda Touzani** dans le cadre de la formation ENI – Développeur Web & Web Mobile.
+- Approche **mobile-first**
+- Adaptation automatique :
+  - menu burger
+  - tableau scrollable
+  - cartes en grille fluide
+  - modale lisible sur mobile
+
+Breakpoints principaux :
+- ≤ 575px (mobile)
+- ≥ 576px (tablette)
+- ≥ 992px (desktop)
+- ≥ 1200px (large desktop)
+
+---
+
+## 🧠 Choix techniques notables
+
+- Aucun framework (JavaScript natif)
+- CSS structuré avec **variables globales**
+- Séparation claire : données / logique / présentation
+- Réutilisation des composants (modale, préférences, affichage)
+
+---
+
+## 🚀 Améliorations possibles
+
+- Ouverture de la modale depuis la carte Leaflet
+- Ajout d’un filtre / tri des apprenants
+- Animation d’apparition de la modale
+- Gestion du focus clavier dans la modale
+- Tests d’accessibilité (ARIA avancé)
+
+---
+
+## 👨‍💻 Auteur
+
+Projet réalisé par **Réda**
+Dans le cadre de la formation **Développeur Web & Web Mobile – ENI**.
+
+---
+
+> Projet pédagogique – Front-end uniquement
+

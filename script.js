@@ -118,8 +118,8 @@ function updateIconsTheme() {
 
         if (img.src.includes("eye-solid-full")) {
             img.src = isLightTheme
-                ? "images/eye-solid-full.svg"
-                : "images/eye-solid-full-white.svg";
+                ? "images/icon/eye-solid-full.svg"
+                : "images/icon/eye-solid-full-white.svg";
         }
     });
 }
@@ -146,7 +146,7 @@ function chargerListe() {
                     <td>${apprenant.ville}</td>
                     <td class="action">
                         <a href="#" class="voir" aria-label="Voir ${apprenant.prenom} ${apprenant.nom}">
-                            <img src="../images/eye-solid-full-white.svg" alt="voir profil" class="icon">
+                            <img src="../images/icon/eye-solid-full-white.svg" alt="voir profil" class="icon">
                         </a>
                         <div class="modale-info-apprenant"></div>
                     </td>
@@ -228,7 +228,7 @@ function afficherModaleApprenant(apprenant, modale) {
 
     modale.innerHTML = `
         <div class="fiche-header">
-            <img src="../images/${apprenant.avatar}" alt="Avatar de ${apprenant.prenom}">
+            <img src="../images/avatar/${apprenant.avatar}" alt="Avatar de ${apprenant.prenom}">
             <div class="infos-principales">
                 <div class="ligne-info">
                     <span class="label">Nom</span>
@@ -276,7 +276,7 @@ document.addEventListener("DOMContentLoaded", () => {
         zoomSnap: 0.25
     }).setView([47, 1.8883335], 5.6);
 
-    // Fond de carte OpenStreetMap (récupéré via le tuto)
+    // Fond de carte OpenStreetMap
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution: "&copy; OpenStreetMap contributors"
     }).addTo(map);
@@ -293,6 +293,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     const marker = L.marker([latitude, longitude]).addTo(map);
 
                     marker.bindPopup(`
+                        <div><img src="../images/avatar/${apprenant.avatar}" style="max-width: 100%; height: auto;</div><br>
                         <div style="text-align: center;">
                             <strong>${apprenant.prenom} ${apprenant.nom}</strong><br>
                             ${apprenant.ville}
@@ -304,9 +305,13 @@ document.addEventListener("DOMContentLoaded", () => {
     } coordonnee();
 });
 
+/* ============================================================
+   12) CHARGEMENT INFO DE LA PROMOTION VIA JSON
+============================================================ */
+
 
 /* ============================================================
-   12) INITIALISATION GLOBALE
+   13) INITIALISATION GLOBALE
 ============================================================ */
 
 document.addEventListener("DOMContentLoaded", () => {

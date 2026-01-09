@@ -64,7 +64,7 @@ ENI-PROMO/
 ### 👁️ Modale apprenant (vue détail)
 - Ouverture par **clic** sur l’icône « œil »
 - Modale générée **100 % en JavaScript**
-- Positionnement intelligent (relative à la ligne)
+- Positionnement (relative à la ligne)
 - Contenu structuré :
   - Avatar
   - Nom / Prénom / Ville (alignement type maquette)
@@ -108,7 +108,7 @@ Breakpoints principaux :
 
 ## 🧠 Choix techniques notables
 
-- Aucun framework (JavaScript natif)
+- Aucun framework (CSS et JavaScript natif)
 - CSS structuré avec **variables globales**
 - Séparation claire : données / logique / présentation
 - Réutilisation des composants (modale, préférences, affichage)
@@ -127,7 +127,7 @@ Breakpoints principaux :
 
 ## 👨‍💻 Auteur
 
-Projet réalisé par **Réda**
+Projet réalisé par **Réda Touzani**
 Dans le cadre de la formation **Développeur Web & Web Mobile – ENI**.
 
 ---

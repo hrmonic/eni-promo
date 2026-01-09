@@ -11,6 +11,7 @@
     --h1-text-shadow:
         2px 2px 4px rgba(0, 0, 0, 0.6),
         -2px -2px 4px rgba(255, 255, 255, 0.3);
+
     --menu-bg: #ffffff;
     --menu-text: rgb(11, 50, 84);
     --menu-border: rgb(11, 50, 84);
@@ -18,8 +19,7 @@
     --menu-hover-text: white;
     --menu-hover-shadow: rgba(255, 255, 255, 0.65);
 
-    --type-affichage-text-shadow:
-        1px 1px 3px rgb(0, 0, 0);
+    --type-affichage-text-shadow: 1px 1px 3px rgb(0, 0, 0);
 
     --button-bg: #ffffff;
     --button-text: rgb(11, 50, 84);
@@ -27,6 +27,7 @@
     --button-hover-bg: rgb(11, 50, 84);
     --button-hover-text: white;
     --button-border-hover-color: white;
+
     --footer-bg: linear-gradient(to left, #769ab97d, #ffffff);
     --footer-text: rgb(11, 50, 84);
 
@@ -107,25 +108,25 @@ body.accueil {
    HEADER
 ============================================================ */
 header {
-
     top: 0;
     z-index: 10;
 
     display: flex;
     justify-content: space-between;
     align-items: stretch;
+
     padding: 0.75rem 1rem;
     background: var(--header-bg);
+
     border-radius: 0.5rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
     margin-bottom: 1rem;
 }
 
-
 .header-gauche {
     display: flex;
     align-items: center;
-    gap: 1
+    gap: 1rem;
 }
 
 .header-gauche h1 {
@@ -144,7 +145,6 @@ header {
 body.light-theme .type-affichage input[type="radio"] {
     accent-color: rgb(11, 50, 84);
 }
-
 
 h1 {
     font-family: 'Segoe UI', Tahoma, sans-serif;
@@ -169,8 +169,6 @@ h2 {
     display: block;
 }
 
-
-
 /* ============================================================
    MENU
 ============================================================ */
@@ -184,14 +182,18 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
+
     padding: 0.5rem;
     font-size: 1.2rem;
     font-weight: 600;
+
     text-decoration: none;
     color: var(--menu-text);
     background-color: var(--menu-bg);
+
     border: 2px solid var(--menu-border);
     border-radius: 10px;
+
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.7);
     transition: all 0.2s ease;
 }
@@ -221,6 +223,7 @@ h2 {
 ============================================================ */
 .type-affichage {
     margin-top: 1.2rem;
+
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -231,6 +234,7 @@ h2 {
     background: none;
     border: none;
     padding: 0;
+
     text-shadow: var(--type-affichage-text-shadow);
 }
 
@@ -238,6 +242,7 @@ h2 {
     display: inline-flex;
     align-items: center;
     gap: 0.25rem;
+
     cursor: pointer;
     color: var(--text-color);
 }
@@ -257,6 +262,7 @@ body.page-carte .type-affichage {
 ============================================================ */
 .tableau-scroll {
     max-height: calc(100vh - 260px);
+    overflow-x: auto;
     overflow-y: auto;
     position: relative;
 }
@@ -302,15 +308,20 @@ body.page-carte .type-affichage {
 
 .carte {
     position: relative;
+
     text-decoration: none;
     width: 100%;
     max-width: 400px;
+
     color: var(--cartes-text);
     background-color: var(--cartes-bg);
+
     border: 2px solid var(--cartes-border);
     border-radius: 0.5rem;
+
     padding: 1rem;
     box-shadow: 0 2px 6px var(--cartes-shadow);
+
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     text-align: center;
 }
@@ -323,41 +334,40 @@ body.page-carte .type-affichage {
 }
 
 /* ============================================================
-   MODALE : Détail des apprenants
+   MODALE : Détail des apprenants 
 ============================================================ */
+
 td.action {
     position: relative;
 }
 
 .modale-info-apprenant {
-
     position: absolute;
-    top: 150%;
-    right: 60%;
-
-
-
+    top: 50%;
+    right: calc(100% + 12px);
     width: 400px;
-    height: auto;
+    max-width: 420px;
     background: white;
     color: black;
-
     border-radius: 10px;
     padding: 1rem;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
-
-    opacity: 0;
+    display: none;
+    z-index: -1;
     pointer-events: none;
-    transform: translateY(-50%) scale(0.95);
-    z-index: 50;
 }
 
 .modale-info-apprenant.visible {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(-50%) scale(1);
+    display: block;
+    pointer-events: none;
+    z-index: 50;
 }
 
+.modale-info-apprenant.visible>* {
+    pointer-events: auto;
+}
+
+/* ---------- STRUCTURE INTERNE MODALE ---------- */
 .modale-info-apprenant .fiche-header {
     display: flex;
     gap: 1rem;
@@ -400,7 +410,25 @@ td.action {
     font-size: 0.9rem;
 }
 
+.modale-fermer {
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgb(11, 50, 84);
+    color: white;
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.7rem;
+    cursor: pointer;
+    visibility: hidden;
+    z-index: 10000;
+}
 
+/* ============================================================
+   MODALE DANS LES CARTES
+============================================================ */
 .cartes-apprenants .carte {
     position: relative;
 }
@@ -410,12 +438,8 @@ td.action {
     left: 50%;
     right: auto;
     width: min(400px, calc(100vw - 24px));
-    transform: translateX(-50%) scale(0.95);
-}
-
-
-.cartes-apprenants .carte .modale-info-apprenant.visible {
-    transform: translateX(-50%) scale(1);
+    max-width: none;
+    transform: translateX(-50%);
 }
 
 /* ============================================================
@@ -518,6 +542,7 @@ h5 {
 .parametres {
     max-width: 800px;
     margin: 0 auto;
+
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -547,13 +572,15 @@ h5 {
 }
 
 /* ============================================================
-   BOUTONS (UNIFIÉS)
+   BOUTONS
 ============================================================ */
 .bouton {
     text-decoration: none;
+
     display: inline-flex;
     justify-content: center;
     align-items: center;
+
     padding: 0.6rem 1.2rem;
     font-family: monospace;
     font-weight: 600;
@@ -586,7 +613,7 @@ h5 {
 }
 
 span.bouton {
-    font-size: 0.1rem;
+    font-size: 0.7rem;
     padding: 0.4rem 0.8rem;
 }
 
@@ -601,11 +628,10 @@ span.bouton {
     border-color: white;
     box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.6);
     transform: translateY(-2px);
-
 }
 
 /* ============================================================
-   PAGE – CARTE Leaflet JS extension
+   PAGE – CARTE Leaflet
 ============================================================ */
 body.page-carte #map {
     width: 100%;
@@ -613,7 +639,6 @@ body.page-carte #map {
     border-radius: 0.5rem;
     margin: 1rem auto;
 }
-
 
 /* ============================================================
    RESPONSIVE MOBILE (≤ 575.98px)
@@ -629,7 +654,6 @@ body.page-carte #map {
     }
 
     /* ---------------- HEADER ---------------- */
-
     header {
         flex-direction: column;
         align-items: center;
@@ -669,7 +693,6 @@ body.page-carte #map {
     }
 
     /* ---------------- TYPE D’AFFICHAGE ---------------- */
-
     .type-affichage {
         padding: 0.45rem 0.8rem;
         border-radius: 10px;
@@ -682,45 +705,47 @@ body.page-carte #map {
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
     }
 
-    .type-affichage label {
-        color: var(--type-affichage-text);
-    }
-
     /* ---------------- TABLEAU ---------------- */
-
     .tableau-scroll {
         max-height: calc(100vh - 300px);
         position: relative;
     }
 
     .tableau {
-        font-size: 0.8rem;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-    }
-
-    .tableau thead,
-    .tableau tbody,
-    .tableau tr {
-        display: contents;
+        font-size: 0.75rem;
+        table-layout: fixed;
     }
 
     .tableau th,
     .tableau td {
-        padding: 0.5rem;
-        text-align: center;
-        vertical-align: middle;
+        padding: 0.75rem 0.5rem;
+        word-break: break-word;
     }
 
-    .tableau td.action {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 0.5rem;
+    /* ---------------- MODALE (LISTE) ---------------- */
+    .tableau td.action .modale-info-apprenant {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        right: auto;
+        width: min(420px, calc(100vw - 24px));
+        max-width: none;
+        transform: translate(-50%, -50%);
+        z-index: 9999;
+        max-height: 80vh;
+        overflow-y: auto;
+        pointer-events: none;
+    }
+
+    .tableau td.action .modale-info-apprenant.visible {
+        pointer-events: none;
+    }
+
+    .tableau td.action .modale-info-apprenant.visible>* {
+        pointer-events: auto;
     }
 
     /* ---------------- CARTES ---------------- */
-
     .cartes-apprenants {
         grid-template-columns: 1fr;
     }
@@ -734,9 +759,48 @@ body.page-carte #map {
         overflow-y: auto;
     }
 
+    .cartes-apprenants .carte .modale-info-apprenant {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        right: auto;
+        transform: translate(-50%, -50%);
+        width: min(420px, calc(100vw - 24px));
+        max-width: none;
+        z-index: 9999;
+        max-height: 80vh;
+        overflow-y: auto;
+        display: none;
+        pointer-events: none;
+    }
+
+    .cartes-apprenants .carte .modale-info-apprenant.visible {
+        display: block;
+        pointer-events: auto;
+    }
+
+    .cartes-apprenants .carte:focus-within .modale-info-apprenant.visible {
+        display: block;
+        pointer-events: auto;
+    }
+
+    .modale-fermer {
+        position: relative;
+        display: block;
+        margin: 1rem auto 0;
+        background: rgb(11, 50, 84);
+        color: white;
+        border: 1px solid grey;
+        border-radius: 10px;
+        padding: 0.4rem 0.6rem;
+        font-size: 0.7rem;
+        cursor: pointer;
+        visibility: visible;
+        z-index: 10000;
+        width: fit-content;
+    }
 
     /* ---------------- PRÉFÉRENCES ---------------- */
-
     .parametres {
         width: 100%;
         max-width: 100%;
@@ -766,15 +830,13 @@ body.page-carte #map {
     }
 
     /* ---------------- CARTE LEAFLET ---------------- */
-
     body.page-carte #map {
         width: 100%;
     }
 }
 
-
 /* ============================================================
-    RESPONSIVE TABLETTE (≥ 576px) 
+   RESPONSIVE TABLETTE (≥ 576px)
 ============================================================ */
 @media (min-width: 576px) {
 
@@ -825,40 +887,113 @@ body.page-carte #map {
         width: 90%;
     }
 
-/* ============================================================
-   RESPONSIVE TABLETTE LARGE (≥ 768px)
-============================================================ */
-    @media (min-width: 768px) {
-
-        header {
-            flex-direction: row;
-            justify-content: space-between;
-        }
-
-        .header-droite {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .cartes-apprenants {
-            grid-template-columns: repeat(3, 1fr);
-        }
-
-        .carte {
-            max-width: 350px;
-        }
-
-        body.page-carte #map {
-            width: 70%;
-        }
+    .tableau td.action .modale-info-apprenant {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        zoom: 100%;
+        right: auto;
+        width: min(420px, calc(100vw - 24px));
+        max-width: none;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+        max-height: 80vh;
+        overflow-y: auto;
+        pointer-events: none;
     }
+
+    .tableau td.action .modale-info-apprenant.visible {
+        pointer-events: none;
+        z-index: 9999;
+    }
+
+    .tableau td.action .modale-info-apprenant.visible>* {
+        pointer-events: auto;
+    }
+
+    .cartes-apprenants .carte .modale-info-apprenant {
+        zoom: 150%;
+        pointer-events: none;
+    }
+
+    .cartes-apprenants .carte .modale-info-apprenant.visible {
+        pointer-events: none;
+    }
+
+    .cartes-apprenants .carte .modale-info-apprenant.visible>* {
+        pointer-events: auto;
+    }
+}
+
+/* ============================================================
+       RESPONSIVE TABLETTE LARGE (≥ 768px)
+    ============================================================ */
+@media (min-width: 768px) {
+
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .header-droite {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cartes-apprenants {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .carte {
+        max-width: 350px;
+    }
+
+    body.page-carte #map {
+        width: 90%;
+    }
+
+    .modale-fermer {
+        display: none;
+    }
+
+    .modale-info-apprenant {
+        position: absolute;
+        top: 50%;
+        right: 60%;
+        width: 300px;
+        max-width: 420px;
+        height: auto;
+        background: white;
+        color: black;
+        border-radius: 10px;
+        padding: 1rem;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+        display: none;
+        z-index: 50;
+        pointer-events: none;
+    }
+
+    .modale-info-apprenant.visible {
+        pointer-events: none;
+    }
+
+    .modale-info-apprenant.visible>* {
+        pointer-events: auto;
+    }
+
+    .tableau td.action .modale-info-apprenant {
+        zoom: 150%;
+        right: 80%;
+        width: 400px;
+        max-width: 420px;
+    }
+
 }
 
 /* ============================================================
    RESPONSIVE Sécurité : basculer transition menu en bas
 ============================================================ */
 @media (max-width: 940px) {
-
     header {
         flex-direction: column;
     }
@@ -878,7 +1013,7 @@ body.page-carte #map {
     }
 
     body.page-carte #map {
-        width: 70%;
+        width: 80%;
     }
 }
 
@@ -891,26 +1026,39 @@ body.page-carte #map {
         grid-template-columns: repeat(6, 1fr);
     }
 
-    .cartes-apprenants .carte:nth-child(6n + 1) .modale-info-apprenant {
-        left: 0;
-        transform: scale(0.95);
+    .cartes-apprenants .carte:nth-child(n+13) .modale-info-apprenant {
+        top: auto;
+        bottom: calc(100% + 12px);
+        transform: translateX(-50%);
     }
 
-    .cartes-apprenants .carte:nth-child(6n + 1) .modale-info-apprenant.visible {
-        transform: scale(1);
+    .cartes-apprenants .carte:nth-child(6n + 1) .modale-info-apprenant {
+        left: 0;
+        transform: none;
     }
 
     .cartes-apprenants .carte:nth-child(6n) .modale-info-apprenant {
         right: 0;
         left: auto;
-        transform: scale(0.95);
+        transform: none;
     }
 
-    .cartes-apprenants .carte:nth-child(6n) .modale-info-apprenant.visible {
-        transform: scale(1);
+    .cartes-apprenants .carte:nth-child(n+13):nth-child(6n + 1) .modale-info-apprenant {
+        transform: none;
     }
 
-    body.page-carte #map {
-        width: 70%;
+    .cartes-apprenants .carte:nth-child(n+13):nth-child(6n) .modale-info-apprenant {
+        transform: none;
+    }
+
+    .modale-fermer {
+        display: none;
+    }
+
+    .tableau td.action .modale-info-apprenant {
+        zoom: 190%;
+        right: 80%;
+        width: 400px;
+        max-width: 420px;
     }
 }

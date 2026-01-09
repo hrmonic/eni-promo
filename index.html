@@ -48,11 +48,13 @@
             </fieldset>
         </nav>
     </header>
-
     <main>
 
-        <h2>Liste des apprenants</h2>
-        <section class="apprenants">
+        <h2 id="titre-apprenants">Liste des apprenants</h2>
+
+        <section class="apprenants" aria-labelledby="titre-apprenants">
+
+            <!-- ===== VUE LISTE ===== -->
             <div class="tableau-scroll">
                 <table class="tableau">
                     <thead>
@@ -70,12 +72,16 @@
                 </table>
             </div>
 
+            <!-- ===== VUE CARTES ===== -->
             <div class="cartes-apprenants" id="cartes-apprenants">
                 <!-- Les cartes des apprenants seront insérées ici dynamiquement via JavaScript -->
             </div>
-            <div class="modale-info-apprenant" id="modale-info-apprenant">
-                <!--Gérer avec le JS-->
+
+            <!-- ===== MODALE ===== -->
+            <div class="modale-info-apprenant" id="modale-info-apprenant" aria-hidden="true">
+                <!-- Géré avec le JS -->
             </div>
+
         </section>
 
     </main>

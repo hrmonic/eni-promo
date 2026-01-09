@@ -6,7 +6,7 @@
       "prenom": "Lucas",
       "ville": "Paris",
       "avatar": "ID_1_MOREL_Lucas.webp",
-      "anecdotes": "Toujours partant pour aider sur les bugs JavaScript.",
+      "anecdotes": "Référence du groupe dès qu'un bug JavaScript résiste. Lucas aime décortiquer les erreurs ligne par ligne et expliquer calmement ce qui bloque, jusqu'à mettre le doigt sur le détail décisif.",
       "coordonnees": {
         "latitude": 48.866667,
         "longitude": 2.333333
@@ -18,7 +18,7 @@
       "prenom": "Camille",
       "ville": "Rennes",
       "avatar": "ID_2_DURAND_Camille.webp",
-      "anecdotes": "Grande adepte des checklists avant de coder.",
+      "anecdotes": "Adèpte des checklists avant de coder, Camille structure chaque projet avec méthode. Plans clairs, étapes définies et organisation visuelle lui permettent d'avancer sereinement.",
       "coordonnees": {
         "latitude": 48.117266,
         "longitude": -1.677793
@@ -30,7 +30,7 @@
       "prenom": "Thomas",
       "ville": "Grenoble",
       "avatar": "ID_3_LEFEVRE_Thomas.webp",
-      "anecdotes": "Aime optimiser le CSS jusque dans les détails.",
+      "anecdotes": "Aime optimiser le CSS jusque dans les détails, parfois au pixel près. Thomas peut passer de longues minutes à ajuster marges et alignements pour obtenir un rendu propre, fluide et cohérent sur tous les écrans.",
       "coordonnees": {
         "latitude": 45.188529,
         "longitude": 5.724524
@@ -42,7 +42,7 @@
       "prenom": "Charlotte",
       "ville": "Brest",
       "avatar": "ID_4_COLIN_Charlotte.webp",
-      "anecdotes": "Toujours curieux des nouvelles technos web.",
+      "anecdotes": "Toujours curieuse des nouvelles technos web, Charlotte adore tester de nouveaux frameworks ou outils dès leur sortie. Elle partage régulièrement ses découvertes avec le groupe, souvent accompagnées de retours très concrets.",
       "coordonnees": {
         "latitude": 48.390394,
         "longitude": -4.486076
@@ -54,7 +54,7 @@
       "prenom": "Lina",
       "ville": "Angers",
       "avatar": "ID_5_HADDAD_Lina.webp",
-      "anecdotes": "Très organisée, fan de Trello et Notion.",
+      "anecdotes": "Perfectionniste côté CSS, Thomas affine les styles jusque dans les moindres détails. Marges, alignements et cohérence visuelle font partie de ses priorités.",
       "coordonnees": {
         "latitude": 47.478419,
         "longitude": -0.563166
@@ -66,7 +66,7 @@
       "prenom": "Hugo",
       "ville": "Tours",
       "avatar": "ID_6_MARTIN_Hugo.webp",
-      "anecdotes": "Apprécie particulièrement le travail en équipe.",
+      "anecdotes": "Apprécie particulièrement le travail en équipe et les projets collaboratifs. Hugo aime échanger des idées, faire des revues de code et avancer collectivement, convaincu que l'on progresse toujours plus vite à plusieurs.",
       "coordonnees": {
         "latitude": 47.394144,
         "longitude": 0.684840
@@ -78,7 +78,7 @@
       "prenom": "Maxime",
       "ville": "Nantes",
       "avatar": "ID_7_PETIT_Maxime.webp",
-      "anecdotes": "Toujours une blague pour détendre l'ambiance.",
+      "anecdotes": "Toujours une blague pour détendre l'ambiance, Maxime sait apporter une touche de légèreté dans les moments de stress. Entre deux lignes de code, il n'hésite pas à lancer une vanne pour remotiver tout le monde.",
       "coordonnees": {
         "latitude": 47.218371,
         "longitude": -1.553621
@@ -90,7 +90,7 @@
       "prenom": "Yasmine",
       "ville": "Annecy",
       "avatar": "ID_8_EL_AMRANI_Yasmine.webp",
-      "anecdotes": "Très à l'aise avec Flexbox et Grid.",
+      "anecdotes": "Particulièrement à l'aise avec Flexbox et Grid, Yasmine aide volontiers sur les problématiques de mise en page. Elle aime partager des astuces simples et efficaces.",
       "coordonnees": {
         "latitude": 45.899247,
         "longitude": 6.129384
@@ -102,7 +102,7 @@
       "prenom": "Bastien",
       "ville": "Montpellier",
       "avatar": "ID_9_ROCHE_Bastien.webp",
-      "anecdotes": "Passionné par l'UX et l'accessibilité.",
+      "anecdotes": "Passionné par l'UX et l'accessibilité, Bastien pense chaque interface du point de vue utilisateur. Lisibilité, confort et inclusion guident ses choix.",
       "coordonnees": {
         "latitude": 43.610769,
         "longitude": 3.876716
@@ -114,7 +114,7 @@
       "prenom": "Julien",
       "ville": "Pau",
       "avatar": "ID_10_BERNARD_Julien.webp",
-      "anecdotes": "Toujours prêt à tester les fonctionnalités en premier.",
+      "anecdotes": "Curieux et volontaire, Julien aime tester les nouvelles fonctionnalités dès leur arrivée. Il repère rapidement les bugs et formule des retours précis pour améliorer le produit.",
       "coordonnees": {
         "latitude": 43.295100,
         "longitude": -0.370797
@@ -126,7 +126,7 @@
       "prenom": "Rémy",
       "ville": "Clermont-Ferrand",
       "avatar": "ID_11_VINCENT_Remy.webp",
-      "anecdotes": "Aime comprendre le fonctionnement interne des frameworks.",
+      "anecdotes": "Aime comprendre le fonctionnement interne des frameworks plutôt que de les utiliser comme des boîtes noires. Rémy pose souvent des questions de fond pour bien saisir ce qui se passe “sous le capot”.",
       "coordonnees": {
         "latitude": 45.777222,
         "longitude": 3.087025
@@ -138,7 +138,7 @@
       "prenom": "Léa",
       "ville": "Arras",
       "avatar": "ID_12_PERRIN_Lea.webp",
-      "anecdotes": "Très méthodique dans son code.",
+      "anecdotes": "Méthodique et rigoureuse, Léa avance étape par étape. Son code est structuré, lisible et pensé pour être maintenable sur le long terme.",
       "coordonnees": {
         "latitude": 50.291002,
         "longitude": 2.777535
@@ -150,7 +150,7 @@
       "prenom": "Kevin",
       "ville": "Lyon",
       "avatar": "ID_13_LEROY_Kevin.webp",
-      "anecdotes": "Toujours attentif à la structure et à la propreté du projet.",
+      "anecdotes": "Sensible à la propreté des projets, Kevin accorde beaucoup d'importance à la structure des fichiers et à la cohérence globale de l'architecture.",
       "coordonnees": {
         "latitude": 45.764043,
         "longitude": 4.835659
@@ -162,7 +162,7 @@
       "prenom": "Mélanie",
       "ville": "Bayonne",
       "avatar": "ID_14_GARNIER_Melanie.webp",
-      "anecdotes": "Aime expérimenter différentes approches de code.",
+      "anecdotes": "Aime expérimenter différentes approches de code et comparer les solutions possibles. Mélanie n'hésite pas à tester plusieurs pistes avant de choisir la plus adaptée au contexte.",
       "coordonnees": {
         "latitude": 43.492949,
         "longitude": -1.474841
@@ -174,7 +174,7 @@
       "prenom": "Alexandre",
       "ville": "Strasbourg",
       "avatar": "ID_15_MEUNIER_Alexandre.webp",
-      "anecdotes": "Très rigoureuse sur les bonnes pratiques.",
+      "anecdotes": "Rigoureuse sur les bonnes pratiques, Alexandre veille au respect des standards et des conventions. Elle privilégie un code propre et durable, même sous contrainte.",
       "coordonnees": {
         "latitude": 48.573405,
         "longitude": 7.752111

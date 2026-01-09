@@ -159,9 +159,11 @@ function chargerListe() {
                     afficherModaleApprenant(apprenant, modale);
                 });
 
-                boutonVoir.addEventListener("mouseleave", () => {
-                    cacherModaleApprenant(modale);
-                });
+                if (window.innerWidth > 576) {
+                    boutonVoir.addEventListener("mouseleave", () => {
+                        cacherModaleApprenant(modale);
+                    });
+                }
 
                 tbody.appendChild(tr);
             });
@@ -204,14 +206,14 @@ function chargerCartes() {
                 const modale = carte.querySelector(".modale-info-apprenant");
 
                 boutonDetails.addEventListener("click", (e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
                     afficherModaleApprenant(apprenant, modale);
                 });
 
-                carte.addEventListener("mouseleave", () => {
-                    cacherModaleApprenant(modale);
-                });
+                if (window.innerWidth > 576) {
+                    carte.addEventListener("mouseleave", () => {
+                        cacherModaleApprenant(modale);
+                    });
+                }
 
                 container.appendChild(carte);
             });
@@ -220,37 +222,55 @@ function chargerCartes() {
 }
 
 /* ============================================================
-   10) CHARGEMENT DES APPRENANTS – CARTES
+   10) AFFICHAGE DU CONTENU JSON – VUE MODALE
 ============================================================*/
 
 function afficherModaleApprenant(apprenant, modale) {
     if (!modale) return;
 
+    document.querySelectorAll(".modale-info-apprenant.visible").forEach(otherModale => {
+        if (otherModale !== modale) {
+            cacherModaleApprenant(otherModale);
+        }
+    });
+
     modale.innerHTML = `
-        <div class="fiche-header">
-            <img src="../images/avatar/${apprenant.avatar}" alt="Avatar de ${apprenant.prenom}">
-            <div class="infos-principales">
-                <div class="ligne-info">
-                    <span class="label">Nom</span>
-                    <span class="valeur">${apprenant.nom}</span>
-                </div>
-                <div class="ligne-info">
-                    <span class="label">Prénom</span>
-                    <span class="valeur">${apprenant.prenom}</span>
-                </div>
-                <div class="ligne-info">
-                    <span class="label">Ville</span>
-                    <span class="valeur">${apprenant.ville}</span>
-                </div>
+    <div class="fiche-header">
+        <img src="../images/avatar/${apprenant.avatar}" alt="Avatar de ${apprenant.prenom}">
+        <div class="infos-principales">
+            <div class="ligne-info">
+                <span class="label">Nom</span>
+                <span class="valeur">${apprenant.nom}</span>
+            </div>
+            <div class="ligne-info">
+                <span class="label">Prénom</span>
+                <span class="valeur">${apprenant.prenom}</span>
+            </div>
+            <div class="ligne-info">
+                <span class="label">Ville</span>
+                <span class="valeur">${apprenant.ville}</span>
             </div>
         </div>
+    </div>
 
-        <div class="zone-texte">
-            ${apprenant.anecdotes || "Aucune information disponible."}
-        </div>
-    `;
+    <div class="zone-texte">
+        ${apprenant.anecdotes || "Aucune information disponible."}
+    </div>
+    
+    <button class="modale-fermer" aria-label="Fermer la fenêtre">Fermer la fiche</button>
+`;
+
 
     modale.classList.add("visible");
+
+    const boutonFermer = modale.querySelector(".modale-fermer");
+    if (boutonFermer) {
+        boutonFermer.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            cacherModaleApprenant(modale);
+        });
+    }
 }
 
 function cacherModaleApprenant(modale) {
@@ -259,8 +279,9 @@ function cacherModaleApprenant(modale) {
 }
 
 
+
 /* ============================================================
-   11) CHARGEMENT DE LA CARTE
+   11) CHARGEMENT DE LA CARTE DE FRANCE
 ============================================================ */
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -306,9 +327,27 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* ============================================================
-   12) CHARGEMENT INFO DE LA PROMOTION VIA JSON
+   12) FERMETURE AUTO DU MENU BURGER AU CLIC AILLEURS (MOBILE)
 ============================================================ */
+function activerFermetureBurger() {
+    const menuToggle = document.getElementById("menu-toggle");
+    const menuLabel = document.querySelector('label[for="menu-toggle"]');
+    const nav = document.querySelector("nav.header-droite");
 
+    if (!menuToggle || !menuLabel || !nav) return;
+
+    document.addEventListener("click", (e) => {
+        if (!menuToggle.checked) return;
+
+        const clicDansMenu = nav.contains(e.target);
+        const clicSurBurger =
+            menuLabel.contains(e.target) || menuToggle.contains(e.target);
+
+        if (clicDansMenu || clicSurBurger) return;
+
+        menuToggle.checked = false;
+    });
+}
 
 /* ============================================================
    13) INITIALISATION GLOBALE
@@ -321,4 +360,6 @@ document.addEventListener("DOMContentLoaded", () => {
     gererPagePreferences();
     chargerListe();
     chargerCartes();
+    activerFermetureBurger();
 });
+
